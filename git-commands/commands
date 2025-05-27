@@ -33,7 +33,6 @@ git checkout -- <file>      # Discard changes in a file
 git revert <commit>         # Revert a specific commit
 git reset --hard <commit>   # Reset to a specific commit (dangerous!)
 
-git reset a file test
 
 $ git status
     On branch feature/basic-python
