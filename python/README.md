@@ -25,14 +25,36 @@ Below are the data types in the Python:
 7. None Type 
 
 
-1. Numeric Types
-    1. int (Integer)
-        Whole numbers, positive or negative, without decimals.
-        Example: x = 10, y = -3
-    2. float (Floating Point)
-        Numbers with a decimal point or in exponential (scientific) notation.
-        Example: x = 3.14, y = -0.001, z = 2e3 (which is 2000.0)
-    3. complex (Complex Numbers)
-        Numbers with a real and imaginary part.
-        Written as a + bj, where j is the imaginary unit.
-        Example: x = 2 + 3j
+1. Numeric Types:
+        a. int: Represents integers, which are whole numbers, positive or negative.
+             i. a = 10 # Example of an integer
+        b. float: Represents floating-point numbers (decimals).
+             i. b = 10.5 # Example of a float
+        c. complex: Used for complex numbers, consisting of a real and an imaginary part.
+                i. c = 2 + 3j # Example of a complex number
+2. Sequence Types
+        a. str: Represents strings, which are sequences of Unicode characters.
+              i. name = "DevOps Automation" # Example of a string
+        b. list: A mutable, ordered collection of items, which can be of any data type.
+             i. fruits = ["apple", "banana", "cherry"] # Example of a list
+        c. tuple: An immutable, ordered collection of items.
+            i. coordinates = (10, 20) # Example of a tuple
+3. Dictionary Type
+        a. dict: A collection of key-value pairs, where the keys must be unique.
+             i. person = {"name": "John", "age": 30} # Example of a dictionary
+4. Set Types
+        a. set: An unordered collection of unique elements.
+            i. numbers = {1, 2, 3, 4} # Example of a set
+        b. frozenset: An immutable version of a set.
+            i. frozen_numbers = frozenset({1, 2, 3, 4}) # Example of a frozenset 
+5. Boolean Type
+        a. bool: Represents one of two values: `True` or `False
+                i. is_valid = True # Example of a boolea
+6. Binary Types
+        a. bytes: Immutable sequence of bytes.
+            i. byte_data = b"hello" # Example of bytes
+        b. bytearray: A mutable sequence of bytes.
+            i. byte_array = bytearray(5) # Example of a bytearray with 5 empty byte
+7. None Type
+        a. NoneType: Represents the absence of a value.
+             i. result = None # Example of None typ

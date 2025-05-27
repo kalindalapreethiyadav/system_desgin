@@ -14,6 +14,18 @@ print(2)   # 2 is an integer.
 print(3.0)  # 3.0 is a float (decimal number).
 print(4+2j) # (4+2j) is a complex number, where 4 is the real part and 2j is the imaginary part.
 
+*************************************************************************
+a = 10
+b = 3
+
+print(a + b)  # Addition
+print(a - b)  # Subtraction
+print(a * b)  # Multiplication
+print(a / b)  # Division
+print(a % b)  # Modulus (remainder)
+print(a ** b) # Exponentiation
+
+***************************************************************************
 
 
 
@@ -33,6 +45,7 @@ print("total module:", module_remainder)
 print("total integer_real_value:", integer_real_value)
 print("total expotentail:", expotentail)
 
+#########################################
 output:
 total sum: 30
 total div: 2.0
