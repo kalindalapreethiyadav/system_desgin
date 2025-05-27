@@ -41,6 +41,47 @@ git merge # Combines histories of two branches, creating a new merge commit.
 git rebase #Rewrites the commit history by placing your changes on top of another branch.
 
 
+ $git rebase -i main
+ #%s/^pick/s    --- select s or pick as per requirement, resolve conflicts
+ $git rebase --continue
+ $git rebase --abort
+
+ # Squash only required number of commit ids
+
+$ git rebase -i HEAD~4
+
+'''
+You can replace pick with:
+reword: Change the commit message.
+edit: Pause to amend the commit.
+squash: Combine this commit with the one before it.
+fixup: Like squash, but discard this commit’s message.
+drop: Remove the commit.'''
+
+ $ git merge feature_branch
+ git merge --abort
+ git merge --continue
+
+# Reset vs revert
+$ git reset <commit-id>    # reset the commit id in local respository 
+$ git revert <commit-id>  # reset the commit id in remote respository
+
+git reset --hard HEAD~1
+git revert HEAD
+
+reset --hard: Deletes the last commit and changes — destructive.
+revert: Creates a new commit that undoes the last one — safe for shared branches.
+
+# Stash
+#You're working on a feature in a Git repository, and you've made some changes to two files: index.html, style.css
+#But suddenly, you're asked to switch branches to fix a bug. You don’t want to commit your current changes yet, but you also can’t switch branches with uncommitted changes.
+
+$ git stash
+Saved working directory and index state WIP on feature/git-test: c43f0c0 adding python basics
+
+$ git stash list
+stash@{0}: WIP on feature/git-test: c43f0c0 adding python basics
+
 $ git status
     On branch feature/basic-python
     Your branch is up to date with 'origin/feature/basic-python'.
