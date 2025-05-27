@@ -11,7 +11,7 @@ Operators with the same precedence are evaluated from left-to-right. In algebra 
 
 --->Strings in Python can be enclosed in either single quotes (') or double quotes ("), or three of each (''' or """)
 
-Data Type:
+# Data Type:
 - Python provides several built-in data types to store and manipulate data. 
 - Python is a - Dynamically Type Programming language where we are not explicitly mentioning 
 the data types definition. 
@@ -62,7 +62,7 @@ Below are the data types in the Python:
                     
                     Keywords and Variables:
 
-Keywords:
+# Keywords:
 
 Keywords are reserved words in Python that have a predefined meaning and cannot be 
 used for anything other than their intended purpose, such as naming variables or functions. 
@@ -83,13 +83,13 @@ Results:
     'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']
 
 
-Packages:
+# Packages:
 
 A package is a collection of Python modules organized in directories. Each 
 package contains an __init__.py file, which signifies that the directory is a Python 
 package. Packages help you organize related modules into a hierarchy.
 
-Creating a Package:
+# Creating a Package:
 
 The structure of a package might look like this:
 my_package/
@@ -115,3 +115,34 @@ Importing a Package:
 
         print(module1.greet()) # Output: Hello from module1
         print(module2.farewell()) # Output: Goodbye from module2
+
+# Installing External Packages:
+
+You can install third-party packages using pip, Python's package manager.
+    pip install package_name
+
+For example, installing the popular requests package:
+    pip install requests
+
+You can then use it in your program:
+
+        import requests
+        response = requests.get("https://api.github.com")
+        print(response.status_code
+
+
+Operators in Python: 
+
+        Operators are symbols that perform operations on variables and values. Python 
+    supports various types of operators, categorized based on the type of operations they 
+    perform.
+
+Here are the main types of operators in Python:
+
+1. Arithmetic: +, -, *, /, //, %, **
+2. Comparison: ==, !=, >, <, >=, <=
+3. Logical: and, or, not
+4. Assignment: =, +=, -=, *=, /=, //=, %=, **=
+5. Bitwise: &, |, ^, ~, <<, >>
+6. Identity: is, is not
+7. Membership: in, not in

@@ -15,13 +15,22 @@ marks = int(input("Enter marks of student out of 100: "))
 temperature = float(input("Enter the temperature in Celsius: "))
 
 
-print("Name od the student is: %s and Marks: %s", name,marks)
+print(f"Name od the student is: {name} and Marks: {marks}")
 
 if marks >= 90:
     print("Grade A")
-elif (marks < 89) && (marks > 75):
-    print "Grade B"
-elif marks < 74 && marks > 50:
+elif 75 < marks > 89:
+    print("Grade B")
+elif 74 < marks >= 50:
     print( "Grade C")
 else:
     print("Grade F")
+
+    
+'''
+1. for Loop
+    ✅ Used to iterate over a sequence (like a list, string, or range).
+    📌 Example: Print numbers from 1 to 5 '''
+
+
+
