@@ -103,8 +103,21 @@ $ git reflog # find all the actions of the user in git! & get the commit id of d
 $ git checkout -b feature-branch abc123
 $git log --graph --oneline --all   # to view in graph and one line way
 
+# how to delete a branch
 
+$ git branch
+  feature/basic-python
+  feature/git-test
+* feature/terraform-recap
+  main
 
+$ git branch -d feature/git-test
+Deleted branch feature/git-test (was 77bf438).
+
+$ git branch
+  feature/basic-python
+* feature/terraform-recap
+  main
 
 $ git status
     On branch feature/basic-python
