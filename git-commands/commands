@@ -111,8 +111,15 @@ $ git branch
 * feature/terraform-recap
   main
 
+# locally delete the branch
 $ git branch -d feature/git-test
+$ git branch -D feature/git-test # force delete
 Deleted branch feature/git-test (was 77bf438).
+
+#Push the locally deleted to remote
+$ git push origin --delete feature/git-test
+To https://github.com/kalindalapreethiyadav/system_desgin.git
+ - [deleted]         feature/git-test
 
 $ git branch
   feature/basic-python
