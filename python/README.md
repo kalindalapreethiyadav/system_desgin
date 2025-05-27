@@ -146,3 +146,6 @@ Here are the main types of operators in Python:
 5. Bitwise: &, |, ^, ~, <<, >>
 6. Identity: is, is not
 7. Membership: in, not in
+
+
+

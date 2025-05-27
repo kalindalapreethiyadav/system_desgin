@@ -1,0 +1,51 @@
+#git confirgurations
+
+git config --global user.name "kalindalapreethiyadav"
+git config --global user.email "kpreethiyadav579@gmail.com"
+
+git init                     # Initialize a new Git repository
+git clone <repo-url>        # Clone an existing repository
+
+
+git status                  # Show the status of changes
+git add <file>              # Stage a specific file
+git add .                   # Stage all changes
+git commit -m "Message"     # Commit staged changes with a message
+
+git branch                  # List branches
+git branch <name>           # Create a new branch
+git checkout <name>         # Switch to a branch
+git checkout -b <name>      # Create and switch to a new branch
+git merge <branch>          # Merge a branch into the current one
+
+
+
+$ git status
+    On branch feature/basic-python
+    Your branch is up to date with 'origin/feature/basic-python'.
+
+    Changes not staged for commit:
+    (use "git add <file>..." to update what will be committed)
+    (use "git restore <file>..." to discard changes in working directory)
+            modified:   python/README.md
+
+    Untracked files:
+    (use "git add <file>..." to include in what will be committed)
+            git-commands/
+
+    no changes added to commit (use "git add" and/or "git commit -a")
+
+    vs 
+
+    $ git status
+        On branch feature/basic-python
+        Your branch is up to date with 'origin/feature/basic-python'.
+
+        Changes to be committed:
+        (use "git restore --staged <file>..." to unstage)
+                new file:   git-commands/commands
+
+        Changes not staged for commit:
+        (use "git add <file>..." to update what will be committed)
+        (use "git restore <file>..." to discard changes in working directory)
+                modified:   python/README.md
