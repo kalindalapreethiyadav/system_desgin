@@ -33,6 +33,13 @@ git checkout -- <file>      # Discard changes in a file
 git revert <commit>         # Revert a specific commit
 git reset --hard <commit>   # Reset to a specific commit (dangerous!)
 
+git fetch origin   # downloads changes from the remote repository but does not apply them to your current working branch.
+git pull # git fetch + git merge --downloads and merges latest changes to local.
+
+# git merge vs git rebase
+git merge # Combines histories of two branches, creating a new merge commit.
+git rebase #Rewrites the commit history by placing your changes on top of another branch.
+
 
 $ git status
     On branch feature/basic-python
@@ -63,3 +70,9 @@ $ git status
         (use "git add <file>..." to update what will be committed)
         (use "git restore <file>..." to discard changes in working directory)
                 modified:   python/README.md
+
+$ git revert 5524b96
+[feature/git-test e5672de] Revert "commit-error"
+ 1 file changed, 1 deletion(-)
+
+
