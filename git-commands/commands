@@ -76,11 +76,35 @@ revert: Creates a new commit that undoes the last one — safe for shared branch
 #You're working on a feature in a Git repository, and you've made some changes to two files: index.html, style.css
 #But suddenly, you're asked to switch branches to fix a bug. You don’t want to commit your current changes yet, but you also can’t switch branches with uncommitted changes.
 
+ommand	What It Does
+git stash # Saves uncommitted changes
+git stash list	# Shows all saved stashes
+git stash apply	# Applies stash but keeps it
+git stash pop	# Applies stash and removes it
+git stash drop	# Deletes a specific stash
+git stash clear	# Deletes all stashes
+
+$ git stash list
+stash@{0}: WIP on feature/basic-python: 0049265 added commands
+$ git stash clear
+$ git stash list
+
 $ git stash
 Saved working directory and index state WIP on feature/git-test: c43f0c0 adding python basics
 
 $ git stash list
 stash@{0}: WIP on feature/git-test: c43f0c0 adding python basics
+
+# Recover Deleted Branch or Commit
+Use git reflog to find lost commits:
+
+$ git reflog # find all the actions of the user in git! & get the commit id of deleted branch
+# Once you find the commit before the merge/deleted branch, you can recreate the branch:
+$ git checkout -b feature-branch abc123
+$git log --graph --oneline --all   # to view in graph and one line way
+
+
+
 
 $ git status
     On branch feature/basic-python
