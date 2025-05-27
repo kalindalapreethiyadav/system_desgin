@@ -17,6 +17,29 @@ print(4+2j) # (4+2j) is a complex number, where 4 is the real part and 2j is the
 
 
 
+num1 = 20
+num2 = 10
+
+total = num1 + num2
+div = num1 / num2
+module_remainder = num1 % num2
+mutiplier = num1*num2
+integer_real_value =  num1 // num2
+expotentail = num1**num2
+print("total sum:", total)
+print("total div:", div)
+print("total mutiplier:", mutiplier)
+print("total module:", module_remainder)
+print("total integer_real_value:", integer_real_value)
+print("total expotentail:", expotentail)
+
+output:
+total sum: 30
+total div: 2.0
+total mutiplier: 200
+total module_remainder: 0
+total integer_real_value: 2
+total expotentail: 10240000000000
 
 
 
