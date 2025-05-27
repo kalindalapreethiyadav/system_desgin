@@ -18,6 +18,20 @@ git checkout <name>         # Switch to a branch
 git checkout -b <name>      # Create and switch to a new branch
 git merge <branch>          # Merge a branch into the current one
 
+git remote add origin <url> # Add a remote repository
+git push -u origin main     # Push changes to remote (first time)
+git push                    # Push changes
+git pull                    # Pull latest changes
+
+git log                     # View commit history
+git log --oneline           # Compact view of history
+git diff                    # Show changes not yet staged
+git diff --staged           # Show staged changes
+
+git reset <file>            # Unstage a file
+git checkout -- <file>      # Discard changes in a file
+git revert <commit>         # Revert a specific commit
+git reset --hard <commit>   # Reset to a specific commit (dangerous!)
 
 
 $ git status
