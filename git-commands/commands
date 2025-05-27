@@ -82,7 +82,7 @@ git stash list	# Shows all saved stashes
 git stash apply	# Applies stash but keeps it
 git stash pop	# Applies stash and removes it
 git stash drop	# Deletes a specific stash
-git stash clear	Deletes all stashes
+git stash clear	# Deletes all stashes
 
 $ git stash
 Saved working directory and index state WIP on feature/git-test: c43f0c0 adding python basics
