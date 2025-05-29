@@ -62,3 +62,6 @@ If you want to view the plan in a readable format, use:
 Or to save it to a text file:
 
 
+# terraform init
+# terraform plan -out=tfplan.tf
+# terraform apply tfplan.out
