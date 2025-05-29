@@ -3,6 +3,7 @@
 # Terraform POc's
 ########################################
 
-output "aws_instance_id {
-    
+output "ec2_instance_id" {
+    description = "Instance ID"
+    value = aws_instance.main_default
 }
