@@ -65,3 +65,31 @@ Or to save it to a text file:
 # terraform init
 # terraform plan -out=tfplan.tf
 # terraform apply tfplan.out
+# terraform plan -destroy -out=destroy.tfplan
+# terraform apply destroy.tfplan
+# terraform state rm <address>
+# terraform state list
+# terraform state show
+# terraform state show module.aws_instance.aws_instance.main_default
+
+
+Using a Plan File with terraform destroy
+You can create a destroy plan and save it to a file like this:
+
+terraform plan -destroy -out=destroy.tfplan
+
+1. Local Values
+Terraform allows you to define local variables using the locals block.
+
+locals {
+  environment = "dev"
+  region      = "us-east-1"
+  name_prefix = "myapp-${local.environment}"
+}
+
+You can then use these locals throughout your configuration:
+
+resource "aws_s3_bucket" "example" {
+  bucket = "${local.name_prefix}-bucket"
+  acl    = "private"
+}

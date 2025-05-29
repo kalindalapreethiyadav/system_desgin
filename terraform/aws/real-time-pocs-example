@@ -410,3 +410,261 @@ commands will detect it and remind you to do so if necessary.
 [ec2-user@ip-172-31-93-12 aws]$ terraform workspace list
         * default
         dev-poc
+
+
+############################################################################################
+[ec2-user@ip-172-31-93-12 aws]$ terraform state list
+    local_file.local_default
+    module.aws_instance.aws_instance.main_default
+
+
+[ec2-user@ip-172-31-93-12 aws]$ terraform state show module.aws_instance.aws_instance.main_default
+
+
+    # module.aws_instance.aws_instance.main_default:
+    resource "aws_instance" "main_default" {
+        ami                                  = "ami-0953476d60561c955"
+        arn                                  = "arn:aws:ec2:us-east-1:975050071559:instance/i-00402835c33bf020e"
+        associate_public_ip_address          = true
+        availability_zone                    = "us-east-1d"
+        cpu_core_count                       = 1
+        cpu_threads_per_core                 = 1
+        disable_api_stop                     = false
+        disable_api_termination              = false
+        ebs_optimized                        = false
+        get_password_data                    = false
+        hibernation                          = false
+        host_id                              = null
+        iam_instance_profile                 = null
+        id                                   = "i-00402835c33bf020e"
+        instance_initiated_shutdown_behavior = "stop"
+        instance_lifecycle                   = null
+        instance_state                       = "running"
+        instance_type                        = "t2.micro"
+        ipv6_address_count                   = 0
+        ipv6_addresses                       = []
+        key_name                             = null
+        monitoring                           = false
+        outpost_arn                          = null
+        password_data                        = null
+        placement_group                      = null
+        placement_partition_number           = 0
+        primary_network_interface_id         = "eni-05259056dd2a1c8ca"
+        private_dns                          = "ip-172-31-95-202.ec2.internal"
+        private_ip                           = "172.31.95.202"
+        public_dns                           = "ec2-44-202-156-118.compute-1.amazonaws.com"
+        public_ip                            = "44.202.156.118"
+        secondary_private_ips                = []
+        security_groups                      = [
+            "default",
+        ]
+        source_dest_check                    = true
+        spot_instance_request_id             = null
+        subnet_id                            = "subnet-0358c8cb08e39e9a7"
+        tags                                 = {
+            "description" = "ec2-default"
+            "owner"       = "preethi@gmail.com"
+        }
+        tags_all                             = {
+            "description" = "ec2-default"
+            "owner"       = "preethi@gmail.com"
+        }
+        tenancy                              = "default"
+        user_data_replace_on_change          = false
+        vpc_security_group_ids               = [
+            "sg-0772cb03b4c958c1d",
+        ]
+
+        capacity_reservation_specification {
+            capacity_reservation_preference = "open"
+        }
+
+        cpu_options {
+            amd_sev_snp      = null
+            core_count       = 1
+            threads_per_core = 1
+        }
+
+        credit_specification {
+            cpu_credits = "standard"
+        }
+
+        enclave_options {
+            enabled = false
+        }
+
+        maintenance_options {
+            auto_recovery = "default"
+        }
+
+        metadata_options {
+            http_endpoint               = "enabled"
+            http_protocol_ipv6          = "disabled"
+            http_put_response_hop_limit = 2
+            http_tokens                 = "required"
+            instance_metadata_tags      = "disabled"
+        }
+
+        private_dns_name_options {
+            enable_resource_name_dns_a_record    = false
+            enable_resource_name_dns_aaaa_record = false
+            hostname_type                        = "ip-name"
+        }
+
+        root_block_device {
+            delete_on_termination = true
+            device_name           = "/dev/xvda"
+            encrypted             = false
+            iops                  = 3000
+            kms_key_id            = null
+            tags                  = {}
+            tags_all              = {}
+            throughput            = 125
+            volume_id             = "vol-0ee6da6bc12a05b94"
+            volume_size           = 8
+            volume_type           = "gp3"
+        }
+    }
+[ec2-user@ip-172-31-93-12 aws]$
+
+[ec2-user@ip-172-31-93-12 aws]$ terraform plan -destroy -out=tfdestroy-plan.out
+
+        local_file.local_default: Refreshing state... [id=dd0bc83bb0523da76e53eb507b3319aa5905bcad]
+        module.aws_instance.aws_instance.main_default: Refreshing state... [id=i-00402835c33bf020e]
+
+        Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following
+        symbols:
+        - destroy
+
+        Terraform will perform the following actions:
+
+        # local_file.local_default will be destroyed
+        - resource "local_file" "local_default" {
+            - content              = "CNAME: A" -> null
+            - content_base64sha256 = "V0PIw7x1yqRAj33lTLR2NZNKIbWsxaYdZTzEqsWBvGQ=" -> null
+            - content_base64sha512 = "PgrqwoGwbPqer+wA4OlSIVohTX8fD2rUUDkDQDQ3YRvudpZFIV8OqBg15Z6/1xr12HSzxSbbrCqfUf6s8ZbTcg==" -> null
+            - content_md5          = "9f08784a09e5753eabe76b59767e00d6" -> null
+            - content_sha1         = "dd0bc83bb0523da76e53eb507b3319aa5905bcad" -> null
+            - content_sha256       = "5743c8c3bc75caa4408f7de54cb47635934a21b5acc5a61d653cc4aac581bc64" -> null
+            - content_sha512       = "3e0aeac281b06cfa9eafec00e0e952215a214d7f1f0f6ad4503903403437611bee769645215f0ea81835e59ebfd71af5d874b3c526dbac2a9f51feacf196d372" -> null
+            - directory_permission = "0777" -> null
+            - file_permission      = "0777" -> null
+            - filename             = "./locals/records.tf" -> null
+            - id                   = "dd0bc83bb0523da76e53eb507b3319aa5905bcad" -> null
+            }
+
+        # module.aws_instance.aws_instance.main_default will be destroyed
+        - resource "aws_instance" "main_default" {
+            - ami                                  = "ami-0953476d60561c955" -> null
+            - arn                                  = "arn:aws:ec2:us-east-1:975050071559:instance/i-00402835c33bf020e" -> null
+            - associate_public_ip_address          = true -> null
+            - availability_zone                    = "us-east-1d" -> null
+            - cpu_core_count                       = 1 -> null
+            - cpu_threads_per_core                 = 1 -> null
+            - disable_api_stop                     = false -> null
+            - disable_api_termination              = false -> null
+            - ebs_optimized                        = false -> null
+            - get_password_data                    = false -> null
+            - hibernation                          = false -> null
+            - id                                   = "i-00402835c33bf020e" -> null
+            - instance_initiated_shutdown_behavior = "stop" -> null
+            - instance_state                       = "running" -> null
+            - instance_type                        = "t2.micro" -> null
+            - ipv6_address_count                   = 0 -> null
+            - ipv6_addresses                       = [] -> null
+            - monitoring                           = false -> null
+            - placement_partition_number           = 0 -> null
+            - primary_network_interface_id         = "eni-05259056dd2a1c8ca" -> null
+            - private_dns                          = "ip-172-31-95-202.ec2.internal" -> null
+            - private_ip                           = "172.31.95.202" -> null
+            - public_dns                           = "ec2-44-202-156-118.compute-1.amazonaws.com" -> null
+            - public_ip                            = "44.202.156.118" -> null
+            - secondary_private_ips                = [] -> null
+            - security_groups                      = [
+                - "default",
+                ] -> null
+            - source_dest_check                    = true -> null
+            - subnet_id                            = "subnet-0358c8cb08e39e9a7" -> null
+            - tags                                 = {
+                - "description" = "ec2-default"
+                - "owner"       = "preethi@gmail.com"
+                } -> null
+            - tags_all                             = {
+                - "description" = "ec2-default"
+                - "owner"       = "preethi@gmail.com"
+                } -> null
+            - tenancy                              = "default" -> null
+            - user_data_replace_on_change          = false -> null
+            - vpc_security_group_ids               = [
+                - "sg-0772cb03b4c958c1d",
+                ] -> null
+                # (8 unchanged attributes hidden)
+
+            - capacity_reservation_specification {
+                - capacity_reservation_preference = "open" -> null
+                }
+
+            - cpu_options {
+                - core_count       = 1 -> null
+                - threads_per_core = 1 -> null
+                    # (1 unchanged attribute hidden)
+                }
+
+            - credit_specification {
+                - cpu_credits = "standard" -> null
+                }
+
+            - enclave_options {
+                - enabled = false -> null
+                }
+
+            - maintenance_options {
+                - auto_recovery = "default" -> null
+                }
+
+            - metadata_options {
+                - http_endpoint               = "enabled" -> null
+                - http_protocol_ipv6          = "disabled" -> null
+                - http_put_response_hop_limit = 2 -> null
+                - http_tokens                 = "required" -> null
+                - instance_metadata_tags      = "disabled" -> null
+                }
+
+            - private_dns_name_options {
+                - enable_resource_name_dns_a_record    = false -> null
+                - enable_resource_name_dns_aaaa_record = false -> null
+                - hostname_type                        = "ip-name" -> null
+                }
+
+            - root_block_device {
+                - delete_on_termination = true -> null
+                - device_name           = "/dev/xvda" -> null
+                - encrypted             = false -> null
+                - iops                  = 3000 -> null
+                - tags                  = {} -> null
+                - tags_all              = {} -> null
+                - throughput            = 125 -> null
+                - volume_id             = "vol-0ee6da6bc12a05b94" -> null
+                - volume_size           = 8 -> null
+                - volume_type           = "gp3" -> null
+                    # (1 unchanged attribute hidden)
+                }
+            }
+
+        Plan: 0 to add, 0 to change, 2 to destroy.
+
+        ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+        Saved the plan to: tfdestroy-plan.out
+
+        To perform exactly these actions, run the following command to apply:
+            terraform apply "tfdestroy-plan.out"
+
+
+# [ec2-user@ip-172-31-93-12 aws]$ terraform destroy tfdestroy-plan.out
+╷
+    │ Error: Destroy can't be called with a plan file
+    │ 
+    │ If this plan was created using plan -destroy, apply it using:
+    │   terraform apply "tfdestroy-plan.out"
+    ╵
