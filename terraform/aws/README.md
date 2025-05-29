@@ -64,7 +64,7 @@ Or to save it to a text file:
 
 # terraform init
 # terraform plan -out=tfplan.tf
-# terraform apply tfplan.out
+# terraform apply tfplan.out -var-file="dev.tfvars"
 # terraform plan -destroy -out=destroy.tfplan
 # terraform apply destroy.tfplan
 # terraform state rm <address>
@@ -75,10 +75,10 @@ Or to save it to a text file:
 # terraform untaint aws_instance.web
 # terraform taint module.my_module.aws_instance.web
 # terraform import [options] ADDRESS ID
-# terraform import aws_instance.my_instance i-1234567890abcdef0
+# terraform import aws_instance.my_instance i-1234567890abcdef0  # once import is done...recheck with plan(should match..Zero add,destroy,change)
 
-
-
+# terraform apply -lock=false
+# terrafomr fmt
 
 
 Using a Plan File with terraform destroy
@@ -126,3 +126,19 @@ You might use terraform taint when:
 
     terraform import aws_instance.my_instance i-1234567890abcdef0
 
+
+# ✅ terraform force-unlock Command
+    The terraform force-unlock command is used to manually remove a state lock when Terraform gets stuck due to an interrupted or failed operation.
+
+    terraform force-unlock LOCK_ID
+
+    ⚠️ Warning
+            Use force-unlock only when you're sure no other Terraform process is running.
+            Forcing unlock while another process is active can corrupt your state.
+
+
+# <filename>.tfvars & <filename>.autotfvars
+
+variables in file should start with "TF_VAR_instance_type=t3.micro
+
+# terraform apply tfplan.out -var-file="dev.tfvars"
