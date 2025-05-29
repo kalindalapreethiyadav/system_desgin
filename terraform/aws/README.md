@@ -34,3 +34,31 @@ Terraform uses the AWS provider, and the credentials you supply determine the ac
     Use the AWS CLI to configure:
 
         aws configure --profile dev
+
+
+To store a Terraform plan locally in a file, you can use the -out flag with the terraform plan command. This is useful for reviewing or applying the plan later.
+
+✅ Command to Save the Plan to a File
+    
+    terraform plan -out=tfplan.out
+
+This saves the plan to a binary file named tfplan.out.
+
+✅ To Apply the Saved Plan
+    
+    terraform apply tfplan.out
+
+This ensures that only the changes in the saved plan are applied, which is useful for automation and approvals.
+
+✅ Optional: Convert Plan to Human-Readable Format
+
+    terraform show tfplan.out
+
+
+If you want to view the plan in a readable format, use:
+
+    terraform show -no-color tfplan.out > plan.txt
+
+Or to save it to a text file:
+
+
