@@ -1,0 +1,18 @@
+import_playbook: /path/to/import/playbook/taxk.yaml
+
+stages:
+  - build
+  - test
+  - apply
+
+build_job:
+  stage: build
+  script: | 
+     - echo "hello world"
+     - cp abc.txt /path/
+
+test_job:
+  stage: test
+  script: 
+     
+  
