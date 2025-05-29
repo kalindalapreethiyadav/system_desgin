@@ -3,5 +3,5 @@ module "aws_instance" {
 }
 
 resource "aws_s3_bucket" "telmate_bucket" {
-    bucket = "${var.prefix}_bucket_main"
+    bucket = "${var.prefix}_test"
 }
