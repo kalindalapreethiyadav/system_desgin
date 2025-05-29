@@ -71,6 +71,14 @@ Or to save it to a text file:
 # terraform state list
 # terraform state show
 # terraform state show module.aws_instance.aws_instance.main_default
+# terraform taint aws_instance.web # destroy and re-create
+# terraform untaint aws_instance.web
+# terraform taint module.my_module.aws_instance.web
+# terraform import [options] ADDRESS ID
+# terraform import aws_instance.my_instance i-1234567890abcdef0
+
+
+
 
 
 Using a Plan File with terraform destroy
@@ -93,3 +101,28 @@ resource "aws_s3_bucket" "example" {
   bucket = "${local.name_prefix}-bucket"
   acl    = "private"
 }
+
+# terraform taint
+
+terraform taint is a command used to manually mark a resource for recreation during the next terraform apply. It tells Terraform that a particular resource is "tainted" or no longer valid, even if the configuration hasn't changed.
+
+Use Case
+You might use terraform taint when:
+
+      --->  A resource is behaving incorrectly or is corrupted.
+      --->  You want to force a fresh deployment of a specific resource.
+      --->  You’ve made manual changes outside Terraform and want to reset the resource.
+
+# ✅ What is terraform import?
+
+    terraform import is a command that allows you to bring existing infrastructure (created outside of Terraform) under Terraform management without recreating it.
+
+🔧 Why Use It?
+    You already have AWS resources (like EC2, S3, RDS) created manually or via another tool.
+    You want to manage those resources using Terraform going forward.
+    You want to avoid downtime or duplication.
+
+    -->terraform import [options] ADDRESS ID
+
+    terraform import aws_instance.my_instance i-1234567890abcdef0
+
