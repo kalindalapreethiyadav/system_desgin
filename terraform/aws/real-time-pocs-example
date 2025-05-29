@@ -1,0 +1,373 @@
+2-user@ip-172-31-93-12 aws]$ git pull origin feature/terraform-recap 
+remote: Enumerating objects: 21, done.
+remote: Counting objects: 100% (21/21), done.
+remote: Compressing objects: 100% (6/6), done.
+remote: Total 13 (delta 7), reused 13 (delta 7), pack-reused 0 (from 0)
+Unpacking objects: 100% (13/13), 1.53 KiB | 223.00 KiB/s, done.
+From https://github.com/kalindalapreethiyadav/system_desgin
+ * branch            feature/terraform-recap -> FETCH_HEAD
+   9456772..2a51910  feature/terraform-recap -> origin/feature/terraform-recap
+Updating 9456772..2a51910
+Fast-forward
+ terraform/aws/README.md                   | 28 ++++++++++++++++++++++++++++
+ terraform/aws/main.tf                     |  2 +-
+ terraform/aws/modules/ec2/ec2-instnace.tf |  4 ++--
+ 3 files changed, 31 insertions(+), 3 deletions(-)
+[ec2-user@ip-172-31-93-12 aws]$ git pull origin feature/terraform-recap 
+From https://github.com/kalindalapreethiyadav/system_desgin
+ * branch            feature/terraform-recap -> FETCH_HEAD
+Already up to date.
+[ec2-user@ip-172-31-93-12 aws]$ git pull origin feature/terraform-recap 
+From https://github.com/kalindalapreethiyadav/system_desgin
+ * branch            feature/terraform-recap -> FETCH_HEAD
+Already up to date.
+[ec2-user@ip-172-31-93-12 aws]$ git pull origin feature/terraform-recap 
+From https://github.com/kalindalapreethiyadav/system_desgin
+ * branch            feature/terraform-recap -> FETCH_HEAD
+Already up to date.
+[ec2-user@ip-172-31-93-12 aws]$ terraform init
+Initializing the backend...
+Initializing modules...
+Initializing provider plugins...
+- Reusing previous version of hashicorp/local from the dependency lock file
+- Reusing previous version of hashicorp/aws from the dependency lock file
+- Using previously-installed hashicorp/local v2.5.3
+- Using previously-installed hashicorp/aws v5.98.0
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+[ec2-user@ip-172-31-93-12 aws]$ terraform plan -out=tfplan.out
+local_file.local_default: Refreshing state... [id=dd0bc83bb0523da76e53eb507b3319aa5905bcad]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following
+symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_s3_bucket.telmate_bucket will be created
+  + resource "aws_s3_bucket" "telmate_bucket" {
+      + acceleration_status         = (known after apply)
+      + acl                         = (known after apply)
+      + arn                         = (known after apply)
+      + bucket                      = "preek_test"
+      + bucket_domain_name          = (known after apply)
+      + bucket_prefix               = (known after apply)
+      + bucket_regional_domain_name = (known after apply)
+      + force_destroy               = false
+      + hosted_zone_id              = (known after apply)
+      + id                          = (known after apply)
+      + object_lock_enabled         = (known after apply)
+      + policy                      = (known after apply)
+      + region                      = (known after apply)
+      + request_payer               = (known after apply)
+      + tags_all                    = (known after apply)
+      + website_domain              = (known after apply)
+      + website_endpoint            = (known after apply)
+
+      + cors_rule (known after apply)
+
+      + grant (known after apply)
+
+      + lifecycle_rule (known after apply)
+
+      + logging (known after apply)
+
+      + object_lock_configuration (known after apply)
+
+      + replication_configuration (known after apply)
+
+      + server_side_encryption_configuration (known after apply)
+
+      + versioning (known after apply)
+
+      + website (known after apply)
+    }
+
+  # module.aws_instance.aws_instance.main_default will be created
+  + resource "aws_instance" "main_default" {
+      + ami                                  = "resolve:ssm:/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64"
+      + arn                                  = (known after apply)
+      + associate_public_ip_address          = (known after apply)
+      + availability_zone                    = (known after apply)
+      + cpu_core_count                       = (known after apply)
+      + cpu_threads_per_core                 = (known after apply)
+      + disable_api_stop                     = (known after apply)
+      + disable_api_termination              = (known after apply)
+      + ebs_optimized                        = (known after apply)
+      + enable_primary_ipv6                  = (known after apply)
+      + get_password_data                    = false
+      + host_id                              = (known after apply)
+      + host_resource_group_arn              = (known after apply)
+      + iam_instance_profile                 = (known after apply)
+      + id                                   = (known after apply)
+      + instance_initiated_shutdown_behavior = (known after apply)
+      + instance_lifecycle                   = (known after apply)
+      + instance_state                       = (known after apply)
+      + instance_type                        = "t2.micro"
+      + ipv6_address_count                   = (known after apply)
+      + ipv6_addresses                       = (known after apply)
+      + key_name                             = (known after apply)
+      + monitoring                           = (known after apply)
+      + outpost_arn                          = (known after apply)
+      + password_data                        = (known after apply)
+      + placement_group                      = (known after apply)
+      + placement_partition_number           = (known after apply)
+      + primary_network_interface_id         = (known after apply)
+      + private_dns                          = (known after apply)
+      + private_ip                           = (known after apply)
+      + public_dns                           = (known after apply)
+      + public_ip                            = (known after apply)
+      + secondary_private_ips                = (known after apply)
+      + security_groups                      = (known after apply)
+      + source_dest_check                    = true
+      + spot_instance_request_id             = (known after apply)
+      + subnet_id                            = (known after apply)
+      + tags                                 = {
+          + "description" = "ec2-default"
+          + "owner"       = "preethi@gmail.com"
+        }
+      + tags_all                             = {
+          + "description" = "ec2-default"
+          + "owner"       = "preethi@gmail.com"
+        }
+      + tenancy                              = (known after apply)
+      + user_data                            = (known after apply)
+      + user_data_base64                     = (known after apply)
+      + user_data_replace_on_change          = false
+      + vpc_security_group_ids               = (known after apply)
+
+      + capacity_reservation_specification (known after apply)
+
+      + cpu_options (known after apply)
+
+      + ebs_block_device (known after apply)
+
+      + enclave_options (known after apply)
+
+      + ephemeral_block_device (known after apply)
+
+      + instance_market_options (known after apply)
+
+      + maintenance_options (known after apply)
+
+      + metadata_options (known after apply)
+
+      + network_interface (known after apply)
+
+      + private_dns_name_options (known after apply)
+
+      + root_block_device (known after apply)
+    }
+
+Plan: 2 to add, 0 to change, 0 to destroy.
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: tfplan.out
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "tfplan.out"
+[ec2-user@ip-172-31-93-12 aws]$ terraform apply tfplan.out
+module.aws_instance.aws_instance.main_default: Creating...
+aws_s3_bucket.telmate_bucket: Creating...
+module.aws_instance.aws_instance.main_default: Still creating... [00m10s elapsed]
+module.aws_instance.aws_instance.main_default: Creation complete after 13s [id=i-03c459d846d42b36f]
+╷
+│ Error: creating S3 Bucket (preek_test): operation error S3: CreateBucket, https response error StatusCode: 400, RequestID: RZJ36J3JFQPJ0RVX, HostID: no6zPLZZORVJgOTT1EpKwePdwCvFfDqa0CQkfYNRi+qRwbV/ozUODBneon/MCMS39F3eKK+Tm/c=, api error InvalidBucketName: The specified bucket is not valid.
+│ 
+│   with aws_s3_bucket.telmate_bucket,
+│   on main.tf line 5, in resource "aws_s3_bucket" "telmate_bucket":
+│    5: resource "aws_s3_bucket" "telmate_bucket" {
+│ 
+╵
+[ec2-user@ip-172-31-93-12 aws]$ git pull origin feature/terraform-recap 
+remote: Enumerating objects: 15, done.
+remote: Counting objects: 100% (15/15), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 8 (delta 5), reused 8 (delta 5), pack-reused 0 (from 0)
+Unpacking objects: 100% (8/8), 626 bytes | 125.00 KiB/s, done.
+From https://github.com/kalindalapreethiyadav/system_desgin
+ * branch            feature/terraform-recap -> FETCH_HEAD
+   2a51910..5401320  feature/terraform-recap -> origin/feature/terraform-recap
+Updating 2a51910..5401320
+Fast-forward
+ terraform/aws/main.tf                  | 4 ----
+ terraform/aws/modules/ec2/variables.tf | 1 -
+ 2 files changed, 5 deletions(-)
+[ec2-user@ip-172-31-93-12 aws]$ terraform init
+Initializing the backend...
+Initializing modules...
+Initializing provider plugins...
+- Reusing previous version of hashicorp/aws from the dependency lock file
+- Reusing previous version of hashicorp/local from the dependency lock file
+- Using previously-installed hashicorp/aws v5.98.0
+- Using previously-installed hashicorp/local v2.5.3
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+[ec2-user@ip-172-31-93-12 aws]$ terraform plan -out=tfplan.out
+local_file.local_default: Refreshing state... [id=dd0bc83bb0523da76e53eb507b3319aa5905bcad]
+module.aws_instance.aws_instance.main_default: Refreshing state... [id=i-03c459d846d42b36f]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following
+symbols:
+-/+ destroy and then create replacement
+
+Terraform will perform the following actions:
+
+  # module.aws_instance.aws_instance.main_default must be replaced
+-/+ resource "aws_instance" "main_default" {
+      ~ ami                                  = "ami-0953476d60561c955" -> "resolve:ssm:/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64" # forces replacement
+      ~ arn                                  = "arn:aws:ec2:us-east-1:975050071559:instance/i-03c459d846d42b36f" -> (known after apply)
+      ~ associate_public_ip_address          = true -> (known after apply)
+      ~ availability_zone                    = "us-east-1d" -> (known after apply)
+      ~ cpu_core_count                       = 1 -> (known after apply)
+      ~ cpu_threads_per_core                 = 1 -> (known after apply)
+      ~ disable_api_stop                     = false -> (known after apply)
+      ~ disable_api_termination              = false -> (known after apply)
+      ~ ebs_optimized                        = false -> (known after apply)
+      + enable_primary_ipv6                  = (known after apply)
+      - hibernation                          = false -> null
+      + host_id                              = (known after apply)
+      + host_resource_group_arn              = (known after apply)
+      + iam_instance_profile                 = (known after apply)
+      ~ id                                   = "i-03c459d846d42b36f" -> (known after apply)
+      ~ instance_initiated_shutdown_behavior = "stop" -> (known after apply)
+      + instance_lifecycle                   = (known after apply)
+      ~ instance_state                       = "running" -> (known after apply)
+      ~ ipv6_address_count                   = 0 -> (known after apply)
+      ~ ipv6_addresses                       = [] -> (known after apply)
+      + key_name                             = (known after apply)
+      ~ monitoring                           = false -> (known after apply)
+      + outpost_arn                          = (known after apply)
+      + password_data                        = (known after apply)
+      + placement_group                      = (known after apply)
+      ~ placement_partition_number           = 0 -> (known after apply)
+      ~ primary_network_interface_id         = "eni-0dc76d45a2ee6707f" -> (known after apply)
+      ~ private_dns                          = "ip-172-31-85-226.ec2.internal" -> (known after apply)
+      ~ private_ip                           = "172.31.85.226" -> (known after apply)
+      ~ public_dns                           = "ec2-13-218-199-172.compute-1.amazonaws.com" -> (known after apply)
+      ~ public_ip                            = "13.218.199.172" -> (known after apply)
+      ~ secondary_private_ips                = [] -> (known after apply)
+      ~ security_groups                      = [
+          - "default",
+        ] -> (known after apply)
+      + spot_instance_request_id             = (known after apply)
+      ~ subnet_id                            = "subnet-0358c8cb08e39e9a7" -> (known after apply)
+        tags                                 = {
+            "description" = "ec2-default"
+            "owner"       = "preethi@gmail.com"
+        }
+      ~ tenancy                              = "default" -> (known after apply)
+      + user_data                            = (known after apply)
+      + user_data_base64                     = (known after apply)
+      ~ vpc_security_group_ids               = [
+          - "sg-0772cb03b4c958c1d",
+        ] -> (known after apply)
+        # (5 unchanged attributes hidden)
+
+      ~ capacity_reservation_specification (known after apply)
+      - capacity_reservation_specification {
+          - capacity_reservation_preference = "open" -> null
+        }
+
+      ~ cpu_options (known after apply)
+      - cpu_options {
+          - core_count       = 1 -> null
+          - threads_per_core = 1 -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      - credit_specification {
+          - cpu_credits = "standard" -> null
+        }
+
+      ~ ebs_block_device (known after apply)
+
+      ~ enclave_options (known after apply)
+      - enclave_options {
+          - enabled = false -> null
+        }
+
+      ~ ephemeral_block_device (known after apply)
+
+      ~ instance_market_options (known after apply)
+
+      ~ maintenance_options (known after apply)
+      - maintenance_options {
+          - auto_recovery = "default" -> null
+        }
+
+      ~ metadata_options (known after apply)
+      - metadata_options {
+          - http_endpoint               = "enabled" -> null
+          - http_protocol_ipv6          = "disabled" -> null
+          - http_put_response_hop_limit = 2 -> null
+          - http_tokens                 = "required" -> null
+          - instance_metadata_tags      = "disabled" -> null
+        }
+
+      ~ network_interface (known after apply)
+
+      ~ private_dns_name_options (known after apply)
+      - private_dns_name_options {
+          - enable_resource_name_dns_a_record    = false -> null
+          - enable_resource_name_dns_aaaa_record = false -> null
+          - hostname_type                        = "ip-name" -> null
+        }
+
+      ~ root_block_device (known after apply)
+      - root_block_device {
+          - delete_on_termination = true -> null
+          - device_name           = "/dev/xvda" -> null
+          - encrypted             = false -> null
+          - iops                  = 3000 -> null
+          - tags                  = {} -> null
+          - tags_all              = {} -> null
+          - throughput            = 125 -> null
+          - volume_id             = "vol-0de6b6212de73b2d4" -> null
+          - volume_size           = 8 -> null
+          - volume_type           = "gp3" -> null
+            # (1 unchanged attribute hidden)
+        }
+    }
+
+Plan: 1 to add, 0 to change, 1 to destroy.
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: tfplan.out
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "tfplan.out"
+[ec2-user@ip-172-31-93-12 aws]$ terraform apply tfplan.out
+module.aws_instance.aws_instance.main_default: Destroying... [id=i-03c459d846d42b36f]
+module.aws_instance.aws_instance.main_default: Still destroying... [id=i-03c459d846d42b36f, 00m10s elapsed]
+module.aws_instance.aws_instance.main_default: Still destroying... [id=i-03c459d846d42b36f, 00m20s elapsed]
+module.aws_instance.aws_instance.main_default: Still destroying... [id=i-03c459d846d42b36f, 00m30s elapsed]
+module.aws_instance.aws_instance.main_default: Still destroying... [id=i-03c459d846d42b36f, 00m40s elapsed]
+module.aws_instance.aws_instance.main_default: Still destroying... [id=i-03c459d846d42b36f, 00m50s elapsed]
+module.aws_instance.aws_instance.main_default: Still destroying... [id=i-03c459d846d42b36f, 01m00s elapsed]
+module.aws_instance.aws_instance.main_default: Still destroying... [id=i-03c459d846d42b36f, 01m10s elapsed]
+module.aws_instance.aws_instance.main_default: Still destroying... [id=i-03c459d846d42b36f, 01m20s elapsed]
+module.aws_instance.aws_instance.main_default: Destruction complete after 1m21s
+module.aws_instance.aws_instance.main_default: Creating...
+module.aws_instance.aws_instance.main_default: Still creating... [00m10s elapsed]
+module.aws_instance.aws_instance.main_default: Creation complete after 12s [id=i-00402835c33bf020e]
+
+Apply complete! Resources: 1 added, 0 changed, 1 destroyed.
