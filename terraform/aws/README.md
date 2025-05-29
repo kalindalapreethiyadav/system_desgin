@@ -21,3 +21,16 @@ resource "local_file" "local"
 🔹 Compute Optimized Instances - Ideal for compute-bound applications.
     C Series: c5, c5a, c5n, c6a, c6g, c6i, c7a, c7g, c7i
 
+
+
+✅ How Terraform Knows Which AWS Account to Use
+Terraform uses the AWS provider, and the credentials you supply determine the account. Here's how you can specify them:
+
+    export AWS_ACCESS_KEY_ID="your-access-key"
+    export AWS_SECRET_ACCESS_KEY="your-secret-key"
+    export AWS_DEFAULT_REGION="us-east-1"
+
+ 2. Shared Credentials File (~/.aws/credentials)
+    Use the AWS CLI to configure:
+
+        aws configure --profile dev
