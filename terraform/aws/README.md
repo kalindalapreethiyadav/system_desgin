@@ -141,4 +141,35 @@ You might use terraform taint when:
 
 variables in file should start with "TF_VAR_instance_type=t3.micro
 
-# terraform apply tfplan.out -var-file="dev.tfvars"
+    --> terraform apply tfplan.out -var-file="dev.tfvars"
+
+
+# local-exec, remote-exec, and file provision
+
+
+🧩 1. local-exec Provisioner
+        Runs a command on the machine where Terraform is executed (your local machine or CI/CD runner).
+
+        🔧 Example:
+        ✅ Use Cases:
+                Triggering local scripts
+                Sending notifications (e.g., Slack, email)
+                Running CLI tools (e.g., aws, kubectl)
+                
+🌐 2. remote-exec Provisioner
+        Runs commands on the remote resource (e.g., an EC2 instance) after it's created.
+
+        🔧 Example:
+        ✅ Use Cases:
+        Installing software
+        Running configuration scripts
+        Bootstrapping servers
+        
+📁 3. file Provisioner
+        Uploads files from your local machine to the remote resource.
+
+        🔧 Example:
+        ✅ Use Cases:
+        Uploading config files
+        Copying scripts or binaries
+        Transferring certificates or secrets (carefully)
