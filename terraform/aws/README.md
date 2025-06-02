@@ -173,3 +173,13 @@ variables in file should start with "TF_VAR_instance_type=t3.micro
         Uploading config files
         Copying scripts or binaries
         Transferring certificates or secrets (carefully)
+
+# Why Use Lifecycle Management?
+   --> Avoid downtime during updates.
+   --> Protect critical infrastructure from accidental deletion.
+   --> Allow coexistence with other tools or manual changes.
+   --> Fine-tune control over resource behavior.
+
+   # create_before_destroy
+   # prevent_destroy 
+   # ignore_changes

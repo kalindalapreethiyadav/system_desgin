@@ -10,4 +10,11 @@ resource "aws_instance" "main_default" {
         description = "ec2-default"
         owner = "preethi@gmail.com"
     }
+
+    lifecycle {
+        # create_before_destroy = true
+        # prevent_destroy = false
+        ignore_changes = [ tags ]
+    }
+
 }
