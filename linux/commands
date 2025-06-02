@@ -1,0 +1,6 @@
+How do you create a user and give sudo access?
+
+    $ sudo adduser devopsuser
+    $ sudo usermod -aG sudo devopsuser
+
+
