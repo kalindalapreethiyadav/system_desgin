@@ -148,4 +148,8 @@ Here are the main types of operators in Python:
 7. Membership: in, not in
 
 
+# 🧱 Types of Modules
+# Built-in Modules: Come with Python (e.g., math, os, sys)
+# User-defined Modules: Files you create (e.g., my_utils.py)
+# Third-party Modules: Installed via pip (e.g., requests, numpy)
 
