@@ -231,3 +231,15 @@ git checkout v1.0.0
 
 # Create a branch from a tag
 git checkout -b hotfix-v1.0.0 v1.0.0
+
+Reset vs Revert:
+
+git reset --soft HEAD~1    #Fix last commit message
+git commit -m "Correct message"
+******************
+git reset HEAD~1  #Undo commit but keep code
+******************
+git reset --hard HEAD~1  #Throw away last commit completely
+******************
+git revert <commit-hash>  #Undo a pushed commit safely
+git push origin main
