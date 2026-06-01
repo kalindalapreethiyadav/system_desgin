@@ -1,0 +1,591 @@
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git
+$ git clone https://github.com/kalindalapreethiyadav/system_desgin.git
+Cloning into 'system_desgin'...
+remote: Enumerating objects: 300, done.
+remote: Counting objects: 100% (50/50), done.
+remote: Compressing objects: 100% (50/50), done.
+remote: Total 300 (delta 7), reused 7 (delta 0), pack-reused 250 (from 1)
+Receiving objects: 100% (300/300), 53.41 KiB | 2.14 MiB/s, done.
+Resolving deltas: 100% (128/128), done.
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git
+$ cd system_desgin/
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ cd ..
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git
+$ git clone https://github.com/kalindalapreethiyadav/ZeroHungerHub.git
+Cloning into 'ZeroHungerHub'...
+remote: Enumerating objects: 9, done.
+remote: Counting objects: 100% (9/9), done.
+remote: Compressing objects: 100% (8/8), done.
+remote: Total 9 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (9/9), 8.68 KiB | 4.34 MiB/s, done.
+Resolving deltas: 100% (1/1), done.
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git
+$ cd system_desgin/
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ ll
+total 12
+drwxr-xr-x 1 ASUS 197121    0 Jun  1 18:30  ansible/
+drwxr-xr-x 1 ASUS 197121    0 Jun  1 18:30  docker/
+drwxr-xr-x 1 ASUS 197121    0 Jun  1 18:30  git-commands/
+drwxr-xr-x 1 ASUS 197121    0 Jun  1 18:30  gitlab-ci/
+drwxr-xr-x 1 ASUS 197121    0 Jun  1 18:30  kubernetes/
+drwxr-xr-x 1 ASUS 197121    0 Jun  1 18:30  linux/
+drwxr-xr-x 1 ASUS 197121    0 Jun  1 18:30  python/
+drwxr-xr-x 1 ASUS 197121    0 Jun  1 18:30  terraform/
+-rw-r--r-- 1 ASUS 197121 7533 Jun  1 18:30 'Untitled Diagram.drawio'
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ ls
+ ansible/   git-commands/   kubernetes/   python/     'Untitled Diagram.drawio'
+ docker/    gitlab-ci/      linux/        terraform/
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git add .
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git commit -m "testing"
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'ASUS@DESKTOP-L9DMO6Q.(none)')
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git config --global user.email "kpreethiyadav579@gmail.com"
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git config --global user.name "kalindalapreethiyadav"
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git add .
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git commit -m "testing"
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git init
+Reinitialized existing Git repository in D:/Git/system_desgin/.git/
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   git-commands/commands
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git add .
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   git-commands/commands
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   git-commands/commands
+
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git commit "added comments"
+error: pathspec 'added comments' did not match any file(s) known to git
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git commit -m "added comments"
+[main cba0ba6] added comments
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git push origin main 
+info: please complete authentication in your browser...
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 478 bytes | 478.00 KiB/s, done.
+Total 4 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/kalindalapreethiyadav/system_desgin.git
+   d6c9e12..cba0ba6  main -> main
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git branch
+* main
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git branch /feature/test
+fatal: 'C:/Program Files/Git/feature/test' is not a valid branch name
+hint: See 'git help check-ref-format'
+hint: Disable this message with "git config set advice.refSyntax false"
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git branch feature/test
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git branch
+  feature/test
+* main
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git checkout feature/test
+M       git-commands/commands
+Switched to branch 'feature/test'
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git add .
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git commit -m "added comments for origin"
+[feature/test 9e5f10d] added comments for origin
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git push origin feature/test
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 495 bytes | 247.00 KiB/s, done.
+Total 4 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+remote: 
+remote: Create a pull request for 'feature/test' on GitHub by visiting:
+remote:      https://github.com/kalindalapreethiyadav/system_desgin/pull/new/feature/test
+remote: 
+To https://github.com/kalindalapreethiyadav/system_desgin.git
+ * [new branch]      feature/test -> feature/test
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git remote -v
+origin  https://github.com/kalindalapreethiyadav/system_desgin.git (fetch)
+origin  https://github.com/kalindalapreethiyadav/system_desgin.git (push)
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git remote -v
+origin  https://github.com/kalindalapreethiyadav/system_desgin.git (fetch)
+origin  https://github.com/kalindalapreethiyadav/system_desgin.git (push)
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git remote remove origin
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git remote -v
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git push origin feature/test
+fatal: 'origin' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git remote add github https://github.com/kalindalapreethiyadav/system_desgin.git
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git push origin feature/test
+fatal: 'origin' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git remote -v
+github  https://github.com/kalindalapreethiyadav/system_desgin.git (fetch)
+github  https://github.com/kalindalapreethiyadav/system_desgin.git (push)
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git push github feature/test
+Everything up-to-date
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git add .
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git commit -m "testing origin related remote commands"
+[feature/test b795e2e] testing origin related remote commands
+ 3 files changed, 58 insertions(+), 2 deletions(-)
+ create mode 100644 git-commands/POC's-Notes
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git push github feature/test 
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 1.02 KiB | 523.00 KiB/s, done.
+Total 5 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/kalindalapreethiyadav/system_desgin.git
+   9e5f10d..b795e2e  feature/test -> feature/test
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git add .
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git commit -m "testing origin related remote commands"
+[feature/test 8196a7e] testing origin related remote commands
+ 2 files changed, 15 insertions(+)
+ create mode 100644 git-commands/image.png
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git push github feature/test 
+Enumerating objects: 8, done.
+Counting objects: 100% (8/8), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 1.52 MiB | 1.20 MiB/s, done.
+Total 5 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/kalindalapreethiyadav/system_desgin.git
+   b795e2e..8196a7e  feature/test -> feature/test
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git stash
+Saved working directory and index state WIP on feature/test: 8196a7e testing origin related remote commands
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git stash list
+stash@{0}: WIP on feature/test: 8196a7e testing origin related remote commands
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git stash pop
+On branch feature/test
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   git-commands/README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (e71641883dfc54b492fbca518d8c3f7fbcf37ab5)
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git stash apply
+No stash entries found.
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git stash
+Saved working directory and index state WIP on feature/test: 8196a7e testing origin related remote commands
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git stash apply
+On branch feature/test
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   git-commands/README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git add .
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git stash apply
+On branch feature/test
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   git-commands/README.md
+
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git stash list
+stash@{0}: WIP on feature/test: 8196a7e testing origin related remote commands
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git stash clear
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git stash list
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git push github origin feature/test 
+error: src refspec origin does not match any
+error: failed to push some refs to 'https://github.com/kalindalapreethiyadav/system_desgin.git'
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git push github feature/test 
+Everything up-to-date
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git commit -m "added stash comments"
+[feature/test 5a87a4b] added stash comments
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git push github feature/test 
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 366 bytes | 366.00 KiB/s, done.
+Total 4 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To https://github.com/kalindalapreethiyadav/system_desgin.git
+   8196a7e..5a87a4b  feature/test -> feature/test
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git checkout main in
+error: pathspec 'in' did not match any file(s) known to git
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (feature/test)
+$ git checkout main
+Switched to branch 'main'
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git merge feature/test
+Updating cba0ba6..5a87a4b
+Fast-forward
+ git-commands/POC's-Notes |   0
+ git-commands/README.md   |  59 +++++++++++++++++++++++++++++++++++++++++++++++
+ git-commands/commands    |  25 ++++++++++++++++----
+ git-commands/image.png   | Bin 0 -> 1608642 bytes
+ 4 files changed, 79 insertions(+), 5 deletions(-)
+ create mode 100644 git-commands/POC's-Notes
+ create mode 100644 git-commands/image.png
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git status
+On branch main
+nothing to commit, working tree clean
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git push origin main 
+fatal: 'origin' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git push github main 
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/kalindalapreethiyadav/system_desgin.git
+   cba0ba6..5a87a4b  main -> main
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git add .
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git commit -m "added tags comments"
+[main c0d6fd2] added tags comments
+ 1 file changed, 52 insertions(+)
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git status
+On branch main
+nothing to commit, working tree clean
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git log --oneline
+c0d6fd2 (HEAD -> main) added tags comments
+5a87a4b (github/main, github/feature/test, feature/test) added stash comments
+8196a7e testing origin related remote commands
+b795e2e testing origin related remote commands
+9e5f10d added comments for origin
+cba0ba6 added comments
+d6c9e12 added python modules
+b0152bd Merge branch 'main' of https://github.com/kalindalapreethiyadav/system_desgin
+c7b9d8d Added lifecycle management process
+b8cd7e2 latest changes
+882844a added state file
+9a84c19 added state file
+f7bcf17 added state file
+746ea0a added state file
+:
+c0d6fd2 (HEAD -> main) added tags comments
+5a87a4b (github/main, github/feature/test, feature/test) added stash comments
+8196a7e testing origin related remote commands
+b795e2e testing origin related remote commands
+9e5f10d added comments for origin
+cba0ba6 added comments
+d6c9e12 added python modules
+b0152bd Merge branch 'main' of https://github.com/kalindalapreethiyadav/system_desgin
+c7b9d8d Added lifecycle management process
+b8cd7e2 latest changes
+882844a added state file
+9a84c19 added state file
+f7bcf17 added state file
+746ea0a added state file
+:
+c0d6fd2 (HEAD -> main) added tags comments
+5a87a4b (github/main, github/feature/test, feature/test) added stash comments
+8196a7e testing origin related remote commands
+b795e2e testing origin related remote commands
+9e5f10d added comments for origin
+cba0ba6 added comments
+d6c9e12 added python modules
+b0152bd Merge branch 'main' of https://github.com/kalindalapreethiyadav/system_desgin
+c7b9d8d Added lifecycle management process
+b8cd7e2 latest changes
+882844a added state file
+9a84c19 added state file
+f7bcf17 added state file
+746ea0a added state file
+c5c0ff9 added state file
+12340c2 added state file
+8a96f79 added state file
+9a4340c added state file
+8b94352 added state file
+b7b2c84 added state file
+4ec7132 added state file
+fbb3c0e added state file
+36b70ad added state file
+0b869b3 apply terrafomr version
+7898860 apply terrafomr version
+64912cf apply terrafomr version
+b884175 apply terrafomr version
+4a0b908 apply terrafomr version
+bf26843 apply terrafomr version
+535f48d added local file changes
+0c67f5a added terraform code
+973cfac added terraform folders
+25d6d30 deleted git test branch
+9997779 adding chnages
+f364f1b adding chnages
+3a62338 Merge pull request #1 from kalindalapreethiyadav/feature/basic-python
+66d04b6 added commands
+ac95415 added commands
+:
+7898860 apply terrafomr version
+7898860 apply terrafomr version
+64912cf apply terrafomr version
+b884175 apply terrafomr version
+4a0b908 apply terrafomr version
+bf26843 apply terrafomr version
+535f48d added local file changes
+0c67f5a added terraform code
+973cfac added terraform folders
+25d6d30 deleted git test branch
+9997779 adding chnages
+f364f1b adding chnages
+3a62338 Merge pull request #1 from kalindalapreethiyadav/feature/basic-python
+66d04b6 added commands
+ac95415 added commands
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git tag -a release-v1.0.0 c0d6fd2 -m "Release git commands"
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git tag lists
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git push github release-v1.0.0 
+Enumerating objects: 8, done.
+Counting objects: 100% (8/8), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 943 bytes | 471.00 KiB/s, done.
+Total 5 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To https://github.com/kalindalapreethiyadav/system_desgin.git
+ * [new tag]         release-v1.0.0 -> release-v1.0.0
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git tag lists
+fatal: tag 'lists' already exists
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git tag
+lists
+release-v1.0.0
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git tag -d lists
+Deleted tag 'lists' (was c0d6fd2)
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git push github --delete main
+To https://github.com/kalindalapreethiyadav/system_desgin.git
+ ! [remote rejected] main (refusing to delete the current branch: refs/heads/main)
+error: failed to push some refs to 'https://github.com/kalindalapreethiyadav/system_desgin.git'
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git push github --delete lists
+error: unable to delete 'lists': remote ref does not exist
+error: failed to push some refs to 'https://github.com/kalindalapreethiyadav/system_desgin.git'
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git tag
+release-v1.0.0
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git push origin main 
+fatal: 'origin' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git push github main 
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/kalindalapreethiyadav/system_desgin.git
+   5a87a4b..c0d6fd2  main -> main
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git add .
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git commit -m "adding the reset vs revert comments"
+[main a687cd4] adding the reset vs revert comments
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ git push github main
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 551 bytes | 551.00 KiB/s, done.
+Total 4 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To https://github.com/kalindalapreethiyadav/system_desgin.git
+   c0d6fd2..a687cd4  main -> main
+
+ASUS@DESKTOP-L9DMO6Q MINGW64 D:/Git/system_desgin (main)
+$ 
