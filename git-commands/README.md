@@ -1,7 +1,6 @@
 Git Basics
 
-🔸 Working Directory
- → The local folder where your project files are stored and modified
+🔸 Working Directory #The local folder where your project files are stored and modified
 🔸 .git Folder
  → Stores all metadata and the object database for your project
 🔸 Stage (Staging Area)
