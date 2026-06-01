@@ -1,3 +1,18 @@
+Git Basics
+
+🔸 Working Directory
+ → The local folder where your project files are stored and modified
+🔸 .git Folder
+ → Stores all metadata and the object database for your project
+🔸 Stage (Staging Area)
+ → Temporary space where you prepare changes before committing
+🔸 Remote Repository
+ → The cloud-hosted version of your repo, stored on platforms like GitHub, GitLab, or Bitbucket
+🔸 Local Repository
+ → A local copy of your repository on your machine
+
+ ![github working](image.png)
+
 git push origin main
 
 Git interprets it as:
