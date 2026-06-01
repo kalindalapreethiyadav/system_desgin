@@ -1,4 +1,7 @@
-#git confirgurations
+#git configurations
+
+First clone the repo, to the local. 
+To set your account's default identity.git
 
 git config --global user.name "kalindalapreethiyadav"
 git config --global user.email "kpreethiyadav579@gmail.com"
