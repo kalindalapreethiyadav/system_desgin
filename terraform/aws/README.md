@@ -13,6 +13,7 @@ resource "local_file" "local"
     content = "Cname: A"
 }
 
+
 # Instance Types in AWS for Ec2 instance
 
 🔹 General Purpose Instances - Designed for a balance of compute, memory, and networking.
