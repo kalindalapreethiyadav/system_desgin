@@ -19,10 +19,10 @@ terraform {
   backend "s3" {
     bucket = "poc-terraform-statefile-$var.prefix-$var.env"
     region = var.region
-    key = "dev/terraform.tfstate"
-   # dynamodb_table = "terraform-locks"  # <1.10 terraform version - works
+    key    = "dev/terraform.tfstate"
+    # dynamodb_table = "terraform-locks"  # <1.10 terraform version - works
     use_lockfile = true
-    encrypt = true
+    encrypt      = true
   }
 }
 
