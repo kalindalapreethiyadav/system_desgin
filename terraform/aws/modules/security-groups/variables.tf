@@ -14,9 +14,3 @@ variable "env" {
     type = string
     default = "dev"
 }
-
-variable "security_group_id" {
-    description = "The EC2 secuirty group ID"
-    type = list[string]
-    default = "sg-id"
-}

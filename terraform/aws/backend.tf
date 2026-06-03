@@ -17,7 +17,7 @@ encrypt: Ensures the state file is encrypted at rest. */
 
 terraform {
   backend "s3" {
-    bucket = "poc-terraform-statefile-preek"
+    bucket = "poc-terraform-statefile-$var.prefix-$var.env"
     region = var.region
     key = "dev/terraform.tfstate"
    # dynamodb_table = "terraform-locks"  # <1.10 terraform version - works
