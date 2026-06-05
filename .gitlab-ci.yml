@@ -1,21 +1,19 @@
 stages:
-
   - build
   - test
   - deploy
 
 build:
-stage: build
-script:
-  - echo "hello this build"
+  stage: build
+  script:
+    - echo "hello this build"
 
 test:
-stage: test
-script:
-  - echo "hello this test"
+  stage: test
+  script:
+    - echo "hello this test"
 
 deploy:
-stage: deploy
-script:
-  - echo "hello this deploy"
-
+  stage: deploy
+  script:
+    - echo "hello this deploy"
