@@ -7,15 +7,15 @@ stages:ll
 build:
 stage: build
 script:
-  - "hello this build"
+  - echo "hello this build"
 
 test:
 stage: test
 script:
-  - "hello this test"
+  - echo "hello this test"
 
 deploy:
 stage: deploy
 script:
-  - "hello this deploy"
+  - echo "hello this deploy"
 
