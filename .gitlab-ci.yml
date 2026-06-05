@@ -1,4 +1,4 @@
-stages:ll
+stages:
 
   - build
   - test
