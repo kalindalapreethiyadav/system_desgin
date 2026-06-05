@@ -19,10 +19,10 @@ sync-to-github:
     - ssh-keyscan github.com >> ~/.ssh/known_hosts
 
   script:
-    - git config --global user.name "GitLab CI"
-    - git config --global user.email "ci@gitlab.com"
+    - git config --global user.name "kalindalapreethiyadav"
+    - git config --global user.email "kpreethiyadav579@gmail.com"
     - git remote remove github || true
-    - git remote add github git@github.com:<username>/<repo>.git
+    - git remote add github git@github.com:kalindalapreethiyadav/system_desgin.git
     - git push github HEAD:$CI_COMMIT_REF_NAME
 
   only:
