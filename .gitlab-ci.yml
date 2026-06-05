@@ -1,7 +1,36 @@
 stages:
+  - sync
   - build
   - test
   - deploy
+
+sync-to-github:
+  stage: sync
+  before_script:
+    # Setup SSH directory
+    - mkdir -p ~/.ssh
+    # Add private key from GitLab variable
+    - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    # Add GitHub to known hosts
+    - ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+  script:
+    # Configure git user
+    - git config --global user.name "kalindalapreethiyadav"
+    - git config --global user.email "kpreethiyadav579@gmail.com"
+
+    # Remove if already exists (avoid error)
+    - git remote remove github || true
+
+    # Add GitHub repo (SSH)
+    - git remote add github git@github.com:kalindalapreethiyadav/system_desgin.git
+
+    # Push current branch to GitHub
+    - git push github HEAD:main
+
+  only:
+    - main
 
 build:
   stage: build
