@@ -77,3 +77,15 @@ run_command(["git", "push", "github", BRANCH, "--force"])
 
 
 print("✅ Sync completed successfully!")
+
+# =============== PUSH DEBUG GITHUB ===============
+
+def run_command(cmd, cwd=None, ignore_error=False):
+    print(f"\nRunning: {' '.join(cmd)}")
+    result = subprocess.run(cmd, cwd=cwd, capture_output=True, text=True)
+
+    print(result.stdout)
+    print(result.stderr)
+
+    if result.returncode != 0 and not ignore_error:
+        raise Exception(f"Command failed: {' '.join(cmd)}")
