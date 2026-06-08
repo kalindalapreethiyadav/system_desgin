@@ -26,6 +26,8 @@ terraform {
   }
 }
 
+
+
 #With Terraform 1.10, HashiCorp introduced native S3 locking. 
 #By simply adding a new parameter “use_lockfile = true”, 
 #Terraform will automatically create a lock file in your S3 bucket whenever a state-changing operation is in progress. 
