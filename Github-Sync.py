@@ -62,17 +62,14 @@ print("Configuring GitHub remote...")
 subprocess.run(["git", "remote", "remove", "github"], stderr=subprocess.DEVNULL)
 GITHUB_REPO = "git@github.com:kalindalapreethiyadav/system_desgin.git"
 
-run_command(["git", "remote", "add", "github", GITHUB_REPO])
+def run_command(cmd, cwd=None, ignore_error=False):
+    print(f"Running: {' '.join(cmd)}")
+    result = subprocess.run(cmd, cwd=cwd)
 
-print("\n🔍 DEBUG: Checking Git remotes...")
-run_command(["git", "remote", "-v"])
+    if result.returncode != 0 and not ignore_error:
+        raise Exception(f"Command failed: {' '.join(cmd)}")
 
-print("\n🔍 DEBUG: Testing SSH connection...")
-run_command(["ssh", "-vT", "git@github.com"])
-
-# =============== DEBUG ===============
-run_command(["git", "remote", "-v"])
-
+run_command(["ssh", "-vT", "git@github.com"], ignore_error=True)
 
 # =============== PUSH TO GITHUB ===============
 print("Pushing to GitHub...")
