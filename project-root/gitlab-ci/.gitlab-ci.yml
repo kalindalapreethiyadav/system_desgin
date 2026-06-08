@@ -4,11 +4,7 @@ stages:
   - test
   - deploy
 
-variables:
-  GITHUB_USERNAME:
-  GITHUB_TOKEN: 
-  GITHUB_REPO:
-
+# Sync GitLab to GitHub Repo
 sync-to-github:
   stage: sync
   image: python:3.11
@@ -21,18 +17,14 @@ sync-to-github:
     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_ed25519
     - chmod 600 ~/.ssh/id_ed25519
     - ssh-keyscan github.com >> ~/.ssh/known_hosts
-
   script:
-    - python3 Github-Sync.py
-
-  only:
-    - main
-
+    - python3 ./project-root/scripts/python/Gitlab-to-Github-SyncRepo.py
 
 build:
   stage: build
   script:
-    - echo "hello this build"
+    - echo "Navigating to Role"
+    - ansible-galaxy init 
 
 test:
   stage: test
