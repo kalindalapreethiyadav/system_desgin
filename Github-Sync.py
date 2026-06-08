@@ -1,10 +1,12 @@
 import os
 import subprocess
 
-# CONFIG
-GITLAB_REPO = "https://gitlab.com/kpreethiyadav579/system_desgin.git"
-GITHUB_REPO = "https://kalindalapreethiyadav:$GITHUB_TOKEN@github.com/kalindalapreethiyadav/system_desgin.git"
+import os
 
+GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
+GITHUB_USERNAME = os.environ.get("GITHUB_USERNAME")
+
+GITHUB_REPO = f"https://{GITHUB_USERNAME}:{GITHUB_TOKEN}@github.com/kalindalapreethiyadav/system_desgin.git"
 LOCAL_DIR = "./repo-sync"
 BRANCH = "main"
 
