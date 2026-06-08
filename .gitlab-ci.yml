@@ -21,19 +21,7 @@ sync-to-github:
     - git config --global user.name "kalindalapreethiyadav"
 
   script:
-    - echo "Cloning GitLab repo..."
-    - git clone $CI_REPOSITORY_URL $REPO_DIR
-    - cd $REPO_DIR
-
-    - echo "Adding GitHub remote..."
-    - git remote add github https://$GITHUB_USERNAME:$GITHUB_TOKEN@github.com/$GITHUB_USERNAME/$GITHUB_REPO.git || true
-
-    - echo "Pull latest changes..."
-    - git pull origin $CI_COMMIT_REF_NAME
-
-    - echo "Push to GitHub..."
-    - git push github $CI_COMMIT_REF_NAME --force
-
+    - python3 Github-Sync.py
   only:
     - main
 

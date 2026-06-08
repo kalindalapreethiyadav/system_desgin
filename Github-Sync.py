@@ -3,7 +3,7 @@ import subprocess
 
 # CONFIG
 GITLAB_REPO = "https://gitlab.com/kpreethiyadav579/system_desgin.git"
-GITHUB_REPO = "https://kalindalapreethiyadav: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@github.com/kalindalapreethiyadav/system_desgin.git"
+GITHUB_REPO = "https://kalindalapreethiyadav:$GITHUB_TOKEN@github.com/kalindalapreethiyadav/system_desgin.git"
 
 LOCAL_DIR = "./repo-sync"
 BRANCH = "main"
