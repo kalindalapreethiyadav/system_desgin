@@ -1,15 +1,20 @@
 import os
 import subprocess
 
-import os
-
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
 GITHUB_USERNAME = os.environ.get("GITHUB_USERNAME")
 
+if not GITHUB_TOKEN or not GITHUB_USERNAME:
+    raise Exception("Missing GitHub credentials in environment variables")
+
 GITHUB_REPO = f"https://{GITHUB_USERNAME}:{GITHUB_TOKEN}@github.com/kalindalapreethiyadav/system_desgin.git"
+
 LOCAL_DIR = "./repo-sync"
 BRANCH = "main"
 
+
+print("USERNAME:", os.environ.get("GITHUB_USERNAME"))
+print("TOKEN EXISTS:", bool(os.environ.get("GITHUB_TOKEN")))
 
 def run(cmd, cwd=None):
     """Execute shell command."""

@@ -22,8 +22,10 @@ sync-to-github:
 
   script:
     - python3 Github-Sync.py
+
   only:
     - main
+
 
 build:
   stage: build
