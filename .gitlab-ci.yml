@@ -3,28 +3,36 @@ stages:
   - build
   - test
   - deploy
-stages:
-  - sync
-  - build
-  - test
-  - deploy
+
+variables:
+  GITHUB_USERNAME:
+  GITHUB_TOKEN: 
+  GITHUB_REPO:
 
 sync-to-github:
   stage: sync
+  image: python:3.11
+  variables:
+      REPO_DIR: "repo-sync"
 
   before_script:
-    - mkdir -p ~/.ssh
-    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
-    - chmod 600 ~/.ssh/id_rsa
-    - ssh-keyscan github.com >> ~/.ssh/known_hosts
-    - export GIT_SSH_COMMAND="ssh -i ~/.ssh/id_ed25519"
+    - apt-get update && apt-get install -y git
+    - git config --global user.email "kpreethiyadav579@gmail.com"
+    - git config --global user.name "kalindalapreethiyadav"
 
   script:
-    - git config --global user.name "kalindalapreethiyadav"
-    - git config --global user.email "kpreethiyadav579@gmail.com"
-    - git remote remove github || true
-    - git remote add github git@github.com:kalindalapreethiyadav/system_desgin.git
-    - git push github HEAD:$CI_COMMIT_REF_NAME
+    - echo "Cloning GitLab repo..."
+    - git clone $CI_REPOSITORY_URL $REPO_DIR
+    - cd $REPO_DIR
+
+    - echo "Adding GitHub remote..."
+    - git remote add github https://$GITHUB_USERNAME:$GITHUB_TOKEN@github.com/$GITHUB_USERNAME/$GITHUB_REPO.git || true
+
+    - echo "Pull latest changes..."
+    - git pull origin $CI_COMMIT_REF_NAME
+
+    - echo "Push to GitHub..."
+    - git push github $CI_COMMIT_REF_NAME --force
 
   only:
     - main
