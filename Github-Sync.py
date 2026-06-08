@@ -1,79 +1,64 @@
 import os
+import shutil
 import subprocess
 
-GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
-GITHUB_USERNAME = os.environ.get("GITHUB_USERNAME")
-
-if not GITHUB_TOKEN or not GITHUB_USERNAME:
-    raise Exception("Missing GitHub credentials in environment variables")
-
-GITHUB_REPO = f"https://{GITHUB_USERNAME}:{GITHUB_TOKEN}@github.com/kalindalapreethiyadav/system_desgin.git"
+# ================= CONFIG =================
+GITLAB_REPO = "https://gitlab.com/kalindalapreethiyadav/system_desgin.git"
+GITHUB_REPO = "git@github.com:kalindalapreethiyadav/system_desgin.git"
 
 LOCAL_DIR = "./repo-sync"
 BRANCH = "main"
 
-
-print("USERNAME:", os.environ.get("GITHUB_USERNAME"))
-print("TOKEN EXISTS:", bool(os.environ.get("GITHUB_TOKEN")))
-
-def run(cmd, cwd=None):
-    """Execute shell command."""
-    try:
-        result = subprocess.run(
-            cmd,
-            cwd=cwd,
-            shell=True,
-            text=True,
-            check=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE
-        )
-        print(result.stdout)
-    except subprocess.CalledProcessError as e:
-        print("Error:", e.stderr)
+# Ensure SSH key is used
+os.environ["GIT_SSH_COMMAND"] = "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no"
 
 
-def clone_if_needed():
-    if not os.path.exists(LOCAL_DIR):
-        print("Cloning GitLab repo...")
-        run(f"git clone {GITLAB_REPO} {LOCAL_DIR}")
-    else:
-        print("Repo already exists")
-
-def setup_github_remote():
-    print("Setting up GitHub remote...")
-
-    # Check if remote already exists
-    remotes = subprocess.run(
-        "git remote",
-        cwd=LOCAL_DIR,
-        shell=True,
-        text=True,
-        stdout=subprocess.PIPE
-    ).stdout
-
-    if "github" not in remotes:
-        run(f"git remote add github {GITHUB_REPO}", cwd=LOCAL_DIR)
-    else:
-        print("GitHub remote already configured")
+# =============== UTIL FUNCTION ===============
+def run_command(cmd, cwd=None):
+    print(f"Running: {' '.join(cmd)}")
+    result = subprocess.run(cmd, cwd=cwd, text=True)
+    if result.returncode != 0:
+        raise Exception(f"Command failed: {' '.join(cmd)}")
 
 
-def pull_from_gitlab():
-    print("Pulling latest from GitLab...")
-    run(f"git pull origin {BRANCH}", cwd=LOCAL_DIR)
+# =============== CLEAN OLD REPO ===============
+if os.path.exists(LOCAL_DIR):
+    print("Removing old repo directory...")
+    shutil.rmtree(LOCAL_DIR)
 
 
-def push_to_github():
-    print("Pushing to GitHub...")
-    run(f"git push github {BRANCH}", cwd=LOCAL_DIR)
+# =============== CLONE GITLAB ===============
+print("Cloning GitLab repo...")
+run_command(["git", "clone", GITLAB_REPO, LOCAL_DIR])
 
 
-def main():
-    clone_if_needed()
-    setup_github_remote()
-    pull_from_gitlab()
-    push_to_github()
+# =============== CHANGE DIR ===============
+os.chdir(LOCAL_DIR)
 
 
-if __name__ == "__main__":
-    main()
+# =============== SET REMOTE ===============
+print("Setting up GitHub remote...")
+
+# Remove existing remote if exists
+subprocess.run(["git", "remote", "remove", "github"], stderr=subprocess.DEVNULL)
+
+# Add GitHub remote
+run_command(["git", "remote", "add", "github", GITHUB_REPO])
+
+
+# =============== FETCH + CHECKOUT ===============
+print("Checking out branch...")
+run_command(["git", "checkout", BRANCH])
+
+
+# =============== PULL LATEST (SAFE) ===============
+print("Pulling latest changes from GitLab...")
+run_command(["git", "pull", "origin", BRANCH])
+
+
+# =============== PUSH TO GITHUB ===============
+print("Pushing to GitHub...")
+run_command(["git", "push", "github", BRANCH])
+
+
+print("✅ Sync completed successfully!")
