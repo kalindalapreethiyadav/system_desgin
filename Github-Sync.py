@@ -60,8 +60,15 @@ run_command(["git", "pull", "origin", BRANCH])
 # =============== ADD GITHUB REMOTE ===============
 print("Configuring GitHub remote...")
 subprocess.run(["git", "remote", "remove", "github"], stderr=subprocess.DEVNULL)
+GITHUB_REPO = "git@github.com:kalindalapreethiyadav/system_desgin.git"
+
 run_command(["git", "remote", "add", "github", GITHUB_REPO])
 
+print("\n🔍 DEBUG: Checking Git remotes...")
+run_command(["git", "remote", "-v"])
+
+print("\n🔍 DEBUG: Testing SSH connection...")
+run_command(["ssh", "-vT", "git@github.com"])
 
 # =============== DEBUG ===============
 run_command(["git", "remote", "-v"])
