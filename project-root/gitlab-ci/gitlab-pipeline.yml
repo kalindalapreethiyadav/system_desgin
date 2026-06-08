@@ -24,7 +24,6 @@ build:
   stage: build
   script:
     - echo "Navigating to Role"
-    # - ansible-galaxy init 
 
 test:
   stage: test
