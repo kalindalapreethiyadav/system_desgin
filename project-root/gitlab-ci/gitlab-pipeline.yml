@@ -27,6 +27,18 @@ sync-to-github:
 
 build:
   stage: build
+  before_script:
+
+    # Install required packages
+    - apt-get update -y
+    - apt-get install -y wget unzip python3-pip
+
+    # Install Terraform
+    - wget https://releases.hashicorp.com/terraform/1.6.6/terraform_1.6.6_linux_amd64.zip
+    - unzip terraform_1.6.6_linux_amd64.zip
+    - mv terraform /usr/local/bin/
+    - terraform --version
+
   script:
     - echo "Running Terraform for ${cloud_name}"
     - ansible-playbook ${terraform_dir}/${cloud_name}/terraform-pipeline.yml
