@@ -8,22 +8,22 @@ variables:
   terraform_dir: "terraform"
   cloud_name: "aws"
 
-# Sync GitLab to GitHub Repo
-sync-to-github:
-  stage: sync
-  image: python:3.11
-  variables:
-    REPO_DIR: "repo-sync"
+# # Sync GitLab to GitHub Repo
+# sync-to-github:
+#   stage: sync
+#   image: python:3.11
+#   variables:
+#     REPO_DIR: "repo-sync"
 
-  before_script:
-    - apt-get update && apt-get install -y git openssh-client
-    - mkdir -p ~/.ssh
-    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_ed25519
-    - chmod 600 ~/.ssh/id_ed25519
-    - ssh-keyscan github.com >> ~/.ssh/known_hosts
+#   before_script:
+#     - apt-get update && apt-get install -y git openssh-client
+#     - mkdir -p ~/.ssh
+#     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_ed25519
+#     - chmod 600 ~/.ssh/id_ed25519
+#     - ssh-keyscan github.com >> ~/.ssh/known_hosts
 
-  script:
-    - python3 ./project-root/scripts/python/Gitlab-to-Github-SyncRepo.py
+#   script:
+#     - python3 ./project-root/scripts/python/Gitlab-to-Github-SyncRepo.py
 
 build:
   stage: build
@@ -37,8 +37,8 @@ build:
     - mv terraform /usr/local/bin/
     - terraform --version
   script:
-    - echo "Running Terraform for ${cloud_name}"
-    - ansible-playbook ${terraform_dir}/${cloud_name}/terraform-pipeline.yml
+    - echo "Running Terraform for aws"
+    - ansible-playbook terraform/aws/terraform-pipeline.yml
 
 test:
   stage: test
