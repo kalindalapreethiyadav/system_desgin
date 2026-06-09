@@ -1,8 +1,13 @@
+
+
 stages:
   - sync
   - build
   - test
   - deploy
+
+Vars: 
+  terraform_dir: "terraform/"
 
 # Sync GitLab to GitHub Repo
 sync-to-github:
@@ -20,10 +25,7 @@ sync-to-github:
   script:
     - python3 ./project-root/scripts/python/Gitlab-to-Github-SyncRepo.py
 
-build:
-  stage: build
-  script:
-    - echo "Navigating to Role"
+import_playbook: terraform/terraform-pipeline.yml
 
 test:
   stage: test
