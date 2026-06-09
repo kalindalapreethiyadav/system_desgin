@@ -7,7 +7,7 @@ stages:
 variables: 
   terraform_dir: "terraform"
   cloud_name: "aws"
-  
+
 before_script:
   - apt-get update -y
   - apt-get install -y curl unzip python3-pip
@@ -26,7 +26,7 @@ build:
     - terraform --version
   script:
     - cd ansible/playbooks/
-    - ansible-playbook terraform.yml
+    - ansible-playbook terraform/terraform-pipeline.yml
 
 
 # # Sync GitLab to GitHub Repo
