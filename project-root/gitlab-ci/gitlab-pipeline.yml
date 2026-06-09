@@ -7,8 +7,7 @@ stages:
 variables: 
   terraform_dir: "terraform"
   cloud_name: "aws"
-
-
+  
 before_script:
   - apt-get update -y
   - apt-get install -y curl unzip python3-pip

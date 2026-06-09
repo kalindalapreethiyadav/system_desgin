@@ -1,1 +1,1 @@
-- import_playbook: terraform.yml
+- import_playbook: terraform/terraform-pipeline.yml
