@@ -38,7 +38,7 @@ build:
     - terraform --version
   script:
     - echo "Running Terraform for aws"
-    - ansible-playbook terraform/aws/terraform-pipeline.yml
+    - ansible-playbook ansible/playbooks/terraform.yml
 
 test:
   stage: test
