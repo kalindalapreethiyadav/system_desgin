@@ -8,15 +8,15 @@
     - name: terraform init
       command: terraform init
       args:
-        chdir: /{{ cloud_name }}/
+        chdir: /aws/
     
     - name:  terraform plan
       command: terraform plan -out=tfplan
       args:
-        chdir: /{{ cloud_name }}/
+        chdir: /aws/
 
     - name: terraform apply
       command: terraform apply
       args:
-        chdir: /{{ cloud_name }}/
+        chdir: /aws/
       
