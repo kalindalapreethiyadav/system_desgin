@@ -1,8 +1,8 @@
 # Terraform related tasks
 - name: Executing terraform tasks
   vars:
-    - environment: "{{ environment }}"
-    - cloud_name: "{{ cloud_name }}"
+    - environment: "dev"
+    - cloud_name: "aws"
 
   tasks:
     - name: terraform init
