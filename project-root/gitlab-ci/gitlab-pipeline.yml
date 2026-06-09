@@ -15,6 +15,7 @@ sync-to-github:
   image: python:3.11
   variables:
       REPO_DIR: "repo-sync"
+      cloud_name: aws
 
   before_script:
     - apt-get update && apt-get install -y git openssh-client
@@ -25,7 +26,10 @@ sync-to-github:
   script:
     - python3 ./project-root/scripts/python/Gitlab-to-Github-SyncRepo.py
 
-import_playbook: terraform/terraform-pipeline.yml
+build:
+  stage: build
+  script:
+    - ansible-playbook terraform/${cloud_name}/terraform-pipeline.yml
 
 test:
   stage: test
