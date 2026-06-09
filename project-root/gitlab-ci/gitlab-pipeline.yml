@@ -36,16 +36,20 @@ build:
     - unzip terraform_1.6.6_linux_amd64.zip
     - mv terraform /usr/local/bin/
     - terraform --version
+    # Install Ansible
+    - pip install ansible
+    # Verify Ansible
+    - ansible --version
   script:
     - echo "Running Terraform for aws"
     - ansible-playbook ansible/playbooks/terraform.yml
 
-test:
-  stage: test
-  script:
-    - echo "hello this test"
+# test:
+#   stage: test
+#   script:
+#     - echo "hello this test"
 
-deploy:
-  stage: deploy
-  script:
-    - echo "hello this deploy"
+# deploy:
+#   stage: deploy
+#   script:
+#     - echo "hello this deploy"
