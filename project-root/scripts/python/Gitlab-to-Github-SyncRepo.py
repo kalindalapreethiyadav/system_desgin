@@ -64,7 +64,7 @@ print("Configuring GitHub remote...")
 # Remove old if exists
 subprocess.run(["git", "remote", "remove", "github"], stderr=subprocess.DEVNULL)
 
-# ✅ ADD IT BACK (CRITICAL FIX)
+# ADD IT BACK (CRITICAL FIX)
 run_command(["git", "remote", "add", "github", GITHUB_REPO])
 
 # Debug remotes
@@ -81,5 +81,5 @@ print("Pushing to GitHub...")
 run_command(["git", "push", "-u", "github", f"{BRANCH}:main", "--force"])
 
 
-print("✅ Sync completed successfully!")
+print("Sync completed successfully!")
 
