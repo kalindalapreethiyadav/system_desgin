@@ -1,0 +1,4 @@
+variables:
+  Enviornment: "dev"
+  Tenant: "zerohunger"
+  CI_PIPELINE_SOURCE: '$CI_PIPELINE_SOURCE'

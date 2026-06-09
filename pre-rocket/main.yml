@@ -1,0 +1,19 @@
+---
+- name: excuting the configurations
+  hosts: localhost
+  gather_facts: no
+
+  vars: 
+    env: "{{ lookup('env', 'Enviornment') }}"
+    tenant: "{{ lookup('tenant', 'Tenant') }}"
+    access_key: "{{ lookup('access_key', 'aws_access_key') }}"
+    secert_key: "{{ lookup('secert_key', 'aws_secert_key') }}"
+
+  tasks:
+    - name: testing tasks
+      debug:
+        msg: "Hello task suning anisble"
+
+    - name: print access_key
+      debug:
+        msg: "$access_key- and $secert_key"

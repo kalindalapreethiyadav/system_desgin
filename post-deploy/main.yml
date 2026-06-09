@@ -1,0 +1,13 @@
+---
+- name: Excuting the configurations
+  hosts: localhost
+  gather_facts: no
+
+  vars: 
+    env: "{{ lookup('env', 'Enviornment') }}"
+    tenant: "{{ lookup('tenant', ('Tenant') }}"
+
+  tasks:
+    - name: testing tasks
+      debug:
+        msg: "Hello task suning anisble"

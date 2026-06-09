@@ -7,7 +7,7 @@ stages:
 variables: 
   terraform_dir: "terraform"
   cloud_name: "aws"
-  
+
 before_script:
   - apt-get update -y
   - apt-get install -y curl unzip python3-pip
@@ -19,6 +19,7 @@ build:
     # Install required packages
     - apt-get update -y
     - apt-get install -y wget unzip python3-pip
+    - apt install ansible -y
     # Install Terraform
     - wget https://releases.hashicorp.com/terraform/1.6.6/terraform_1.6.6_linux_amd64.zip
     - unzip terraform_1.6.6_linux_amd64.zip
@@ -26,7 +27,7 @@ build:
     - terraform --version
   script:
     - cd ansible/playbooks/
-    - ansible-playbook terraform.yml
+    - ansible-playbook trigger-playbook.yml
 
 
 # # Sync GitLab to GitHub Repo
@@ -44,19 +45,23 @@ build:
 #     - ssh-keyscan github.com >> ~/.ssh/known_hosts
 
 #   script:
-#     - python3 ./project-root/scripts/python/Gitlab-to-Github-SyncRepo.py
+#     - python3 ./ansible/scripts/python/Gitlab-to-Github-SyncRepo.py
 
-
-  script:
-    - echo "Running Terraform for aws"
-    - ansible-playbook ansible/playbooks/terraform.yml
 
 # test:
 #   stage: test
 #   script:
 #     - echo "hello this test"
 
-# deploy:
-#   stage: deploy
-#   script:
-#     - echo "hello this deploy"
+
+deploy_infra:
+  stage: deploy
+  image: python:3.10
+
+  before_script:
+    - pip install ansible
+    - ansible-galaxy collection install -r ansible/requirements.yml
+
+  script:
+    - cd ansible
+    - ansible-playbook playbooks/trigger-playbook.yml

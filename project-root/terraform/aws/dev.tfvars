@@ -1,1 +1,0 @@
-TF_VAR_commany = "company_name"
