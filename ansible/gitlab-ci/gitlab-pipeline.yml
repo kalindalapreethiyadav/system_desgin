@@ -19,13 +19,12 @@ build:
     # Install required packages
     - apt-get update -y
     - apt-get install -y wget unzip python3-pip
+    - apt install ansible -y
     # Install Terraform
     - wget https://releases.hashicorp.com/terraform/1.6.6/terraform_1.6.6_linux_amd64.zip
     - unzip terraform_1.6.6_linux_amd64.zip
     - mv terraform /usr/local/bin/
     - terraform --version
-    - pip install ansible
-    - ansible --version
   script:
     - cd ansible/playbooks/
     - ansible-playbook playbooks/trigger-playbook.yml
