@@ -1,21 +1,40 @@
 ---
-- name: Execute Terraform Workflow
+- name: Trigger Terraform from Ansible
   hosts: localhost
   connection: local
   gather_facts: no
 
+  vars:
+    terraform_dir: "{{ playbook_dir }}/../terraform/aws"   # change if azure
+
   tasks:
-    - name: Terraform Init
+
+    - name: Check if Terraform is installed
+      command: terraform --version
+      register: terraform_version
+      ignore_errors: yes
+
+    - name: Fail if Terraform not installed
+      fail:
+        msg: "Terraform is not installed on this system"
+      when: terraform_version.rc != 0
+
+    - name: Initialize Terraform
       command: terraform init
       args:
-        chdir: aws
+        chdir: "{{ terraform_dir }}"
 
-    - name: Terraform Plan
+    - name: Validate Terraform code
+      command: terraform validate
+      args:
+        chdir: "{{ terraform_dir }}"
+
+    - name: Plan Terraform changes
       command: terraform plan -out=tfplan
       args:
-        chdir: aws
+        chdir: "{{ terraform_dir }}"
 
-    - name: Terraform Apply
+    - name: Apply Terraform changes
       command: terraform apply -auto-approve tfplan
       args:
-        chdir: aws
+        chdir: "{{ terraform_dir }}"
