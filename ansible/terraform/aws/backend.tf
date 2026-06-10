@@ -3,6 +3,6 @@ terraform {
         bucket = "zerohunger-terraform-state-dev"
         key = "dev"
         region = "us-eat-1"
-        use_lockfile = "true"
+        use_lockfile = true
     }
 }
