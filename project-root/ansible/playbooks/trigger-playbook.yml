@@ -1,2 +1,21 @@
 ---
-- import_playbook: terraform/terraform-pipeline.yml
+- name: Execute Terraform Workflow
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - name: Terraform Init
+      command: terraform init
+      args:
+        chdir: aws
+
+    - name: Terraform Plan
+      command: terraform plan -out=tfplan
+      args:
+        chdir: aws
+
+    - name: Terraform Apply
+      command: terraform apply -auto-approve tfplan
+      args:
+        chdir: aws
