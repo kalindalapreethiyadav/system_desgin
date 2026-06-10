@@ -44,7 +44,7 @@ build:
 #     - ssh-keyscan github.com >> ~/.ssh/known_hosts
 
 #   script:
-#     - python3 ./project-root/scripts/python/Gitlab-to-Github-SyncRepo.py
+#     - python3 ./ansible/scripts/python/Gitlab-to-Github-SyncRepo.py
 
 
 # test:
