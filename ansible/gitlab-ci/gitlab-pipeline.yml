@@ -28,7 +28,7 @@ build:
   script:
     - pwd
     - cd ansible/playbooks/
-    - ll
+    - ls
     - ansible-playbook trigger-playbook.yml
 
 
