@@ -26,9 +26,7 @@ build:
     - mv terraform /usr/local/bin/
     - terraform --version
   script:
-    - pwd
     - cd ansible/playbooks/
-    - ls
     - ansible-playbook trigger-playbook.yml
 
 

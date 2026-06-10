@@ -1,10 +1,7 @@
-module "aws_instance" {
-  source            = "./modules/ec2"
-  security_group_id = [module.security_groups.secuirty_group_ID]
+resource "aws_instance" "zerohunger-ec2" {
+    instance_type  = "t2.micro"
+    ami   = "ami-0152204c1a187337c"
+    tags = {
+        env = "dev"
+    }
 }
-
-# resource "local_file" "local_default" {
-#     filename = "./locals/records.tf"
-#     content = "CNAME: A"
-# }
-
