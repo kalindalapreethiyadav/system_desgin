@@ -26,7 +26,7 @@ build:
     - terraform --version
   script:
     - cd ansible/playbooks/
-    - ansible-playbook ansible/trigger-playbook.yml
+    - ansible-playbook ansible/playbooks/trigger-playbook.yml
 
 
 # # Sync GitLab to GitHub Repo
