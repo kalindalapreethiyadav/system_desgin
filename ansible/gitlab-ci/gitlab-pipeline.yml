@@ -47,10 +47,6 @@ build:
 #     - python3 ./project-root/scripts/python/Gitlab-to-Github-SyncRepo.py
 
 
-  script:
-    - echo "Running Terraform for aws"
-    - ansible-playbook ansible/playbooks/terraform.yml
-
 # test:
 #   stage: test
 #   script:
