@@ -1,6 +1,6 @@
 ---
 - name: Excuting the configurations
-  host: localhost
+  hosts: localhost
   gather_facts: no
 
   vars: 
