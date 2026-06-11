@@ -18,9 +18,18 @@
       debug:
         msg: "$access_key- and $secert_key"
 
-    - name: excuting terraform
+    - name: excuting terraform init
       command: terraform init
       args:
         chdir: terraform
         
+    - name: executing terraform plan
+      command: terraform plan -out=tfplan
+      args:
+        chdir: terraform
+    
+    - name: excuting terraform apply
+      command: terraform apply -auto-approve
+      args:
+        chdir: terraform
  
