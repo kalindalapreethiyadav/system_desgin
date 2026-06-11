@@ -43,7 +43,7 @@
         AWS_SECRET_ACCESS_KEY: "{{ secret_key }}"
 
     - name: execute terraform apply
-      command: terraform apply auto-apply
+      command: terraform apply plan.tf auto-apply
       args:
         chdir: terraform
       environment:
