@@ -1,5 +1,5 @@
 ---
-- name: Excuting the configurations
+- name: excuting the configurations
   host: localhost
   gather_facts: no
 
