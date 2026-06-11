@@ -22,7 +22,7 @@ pre-rocket:
 build:
   stage: build
   script:
-    - echo "Deploying to $Enviornment for $Tenant"
+    - echo "hello"
 
 deploy:
   stage: deploy
