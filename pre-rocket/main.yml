@@ -17,3 +17,10 @@
     - name: print access_key
       debug:
         msg: "$access_key- and $secert_key"
+
+    - name: excuting terraform
+      command: terraform init
+      args:
+        chdir: terraform
+        
+ 
