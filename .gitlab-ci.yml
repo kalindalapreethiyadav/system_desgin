@@ -28,9 +28,19 @@ before_script:
     - ansible --version
     - python3 --version
 
-gilab_to_github_sync:
-  stage: gilab_to_github_sync
-  image: python
+
+# Sync GitLab to GitHub Repo
+sync-to-github:
+  stage: sync
+  image: python:3.11
+  variables:
+    REPO_DIR: "repo-sync"
+  before_script:
+    - apt-get update && apt-get install -y git openssh-client
+    - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_ed25519
+    - chmod 600 ~/.ssh/id_ed25519
+    - ssh-keyscan github.com >> ~/.ssh/known_hosts
   script:
     - python3 scripts/python/Gitlab-to-Github-SyncRepo.py
 
