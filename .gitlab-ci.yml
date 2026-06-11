@@ -1,13 +1,10 @@
-
 variables:
-   CI_DEBUG_TRACE: "false"
-   Enviornment: $Enviornment
-   Tenant: $Tenant
+  CI_DEBUG_TRACE: "false"
 
 workflow:
   rules:
     - if: '$CI_PIPELINE_SOURCE == "trigger"'
-  
+
 stages:
   - pre-rocket
   - build
@@ -17,23 +14,21 @@ stages:
 pre-rocket:
   stage: pre-rocket
   script:
-    - echo "hello"
-    
+    - echo "Environment: $Enviornment"
+    - echo "Tenant: $Tenant"
+
 build:
   stage: build
   script:
-    - echo "hello"
+    - echo "Environment: $Enviornment"
+    - echo "Tenant: $Tenant"
 
 deploy:
   stage: deploy
   script:
-    - echo "hello"
+    - echo "Deploying to $Enviornment for $Tenant"
 
 post-deploy:
   stage: post-deploy
   script:
-    - echo "hello"
-
-# include:
-#   - local: 'ansible/gitlab-ci/gitlab-pipeline.yml'
-#   # - local: 'ansible/github-actions/github-pipeline.yml'
+    - echo "Completed for $Tenant"
