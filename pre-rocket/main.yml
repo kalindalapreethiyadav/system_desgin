@@ -9,6 +9,10 @@
     access_key: "{{ lookup('env', 'AWS_ACCESS_KEY_ID') }}"
     secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
 
+  environment:
+    AWS_ACCESS_KEY_ID: "{{ access_key }}"
+    AWS_SECRET_ACCESS_KEY: "{{ secret_key }}"
+
   tasks:
     - name: testing tasks
       debug:
@@ -34,19 +38,27 @@
         AWS_ACCESS_KEY_ID: "{{ access_key }}"
         AWS_SECRET_ACCESS_KEY: "{{ secret_key }}"
 
-    - name: execute terraform plan
-      command: terraform plan out=plan.tf
+    - name: Executing terraform plan
+      command:
+        argv:
+          - terraform
+          - plan
+          - -out=plan.tf
       args:
         chdir: terraform
       environment:
         AWS_ACCESS_KEY_ID: "{{ access_key }}"
         AWS_SECRET_ACCESS_KEY: "{{ secret_key }}"
 
-    - name: execute terraform apply
-      command: terraform apply plan.tf auto-apply
+    - name: Executing terraform apply
+      command:
+        argv:
+          - terraform
+          - apply
+          - -auto-approve
+          - plan.tf
       args:
         chdir: terraform
       environment:
         AWS_ACCESS_KEY_ID: "{{ access_key }}"
         AWS_SECRET_ACCESS_KEY: "{{ secret_key }}"
-
