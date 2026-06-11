@@ -9,6 +9,7 @@ include:
   - local: include.yml
 
 stages:
+  - gilab_to_github_sync
   - pre-rocket
   - build
   - deploy
@@ -26,6 +27,12 @@ before_script:
     - terraform version
     - ansible --version
     - python3 --version
+
+gilab_to_github_sync:
+  stage: gilab_to_github_sync
+  image: python
+  script:
+    - python3 anisble/python/Gitlab-to-Github-SyncRepo.py
 
 pre-rocket:
   stage: pre-rocket
