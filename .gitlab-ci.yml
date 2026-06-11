@@ -32,7 +32,7 @@ gilab_to_github_sync:
   stage: gilab_to_github_sync
   image: python
   script:
-    - python3 anisble/python/Gitlab-to-Github-SyncRepo.py
+    - python3 scripts/python/Gitlab-to-Github-SyncRepo.py
 
 pre-rocket:
   stage: pre-rocket
