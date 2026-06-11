@@ -17,27 +17,22 @@ stages:
 pre-rocket:
   stage: pre-rocket
   script:
-    - echo "Env: $Enviornment"
-    - echo "Tenant: $Tenant"
-
+    - echo "hello"
+    
 build:
   stage: build
   script:
-    - echo "Env: $Enviornment"
-    - echo "Tenant: $Tenant"
+    - echo "hello"
 
 deploy:
   stage: deploy
   script:
-    - echo "Env: $Enviornment"
-    - echo "Tenant: $Tenant"
+    - echo "hello"
 
 post-deploy:
   stage: post-deploy
   script:
-    - echo "Env: $Enviornment"
-    - echo "Tenant: $Tenant"
-
+    - echo "hello"
 
 # include:
 #   - local: 'ansible/gitlab-ci/gitlab-pipeline.yml'
