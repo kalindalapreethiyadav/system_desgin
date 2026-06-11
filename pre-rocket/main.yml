@@ -1,6 +1,6 @@
 ---
 - name: excuting the configurations
-  hosts: localhost
+  hosts: web
   gather_facts: no
 
   vars: 
