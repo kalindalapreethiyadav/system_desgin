@@ -3,7 +3,8 @@
   gather_facts: "false"
 
   vars: 
-    Enviornment: "dev"
+    env: "{{ lookup('env', 'Enviornment') }}"
+    tenant: "{{ lookup('tenant', ('Tenant') }}"
 
   tasks:
     - name: testing tasks
