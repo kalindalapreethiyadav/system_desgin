@@ -1,3 +1,22 @@
-include:
-  - local: 'ansible/gitlab-ci/gitlab-pipeline.yml'
-  # - local: 'ansible/github-actions/github-pipeline.yml'
+
+variables:
+   CI_DEBUG_TRACE: "false"
+   Enviornment: $Enviornment
+   Tenant: $Tenant
+
+stages:
+  - pre-rocket
+  - build
+  - deploy
+  - post-deploy
+
+pre-rocket:
+  stage: pre-rocket
+  script:
+    - echo "Env: $Enviornment"
+    - echo "Tenant: $Tenant"
+
+
+# include:
+#   - local: 'ansible/gitlab-ci/gitlab-pipeline.yml'
+#   # - local: 'ansible/github-actions/github-pipeline.yml'
