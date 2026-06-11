@@ -35,6 +35,9 @@
       args:
         chdir: terraform
       register: tf_init
+      environment:
+        AWS_ACCESS_KEY_ID: "{{ access_key }}"
+        AWS_SECRET_ACCESS_KEY: "{{ secret_key }}"
 
     - name: Show readable output
       debug:
@@ -50,6 +53,9 @@
       args:
         chdir: terraform
       register: tf_plan
+      environment:
+        AWS_ACCESS_KEY_ID: "{{ access_key }}"
+        AWS_SECRET_ACCESS_KEY: "{{ secret_key }}"
 
     - name: Show readable output
       debug:
@@ -65,6 +71,10 @@
       args:
         chdir: terraform
       register: tf_apply
+      environment:
+        AWS_ACCESS_KEY_ID: "{{ access_key }}"
+        AWS_SECRET_ACCESS_KEY: "{{ secret_key }}"
+    
 
     - name:  print terraform apply log
       debug:
