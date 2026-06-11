@@ -14,8 +14,7 @@ stages:
 pre-rocket:
   stage: pre-rocket
   script:
-    - echo "Environment: $Enviornment"
-    - echo "Tenant: $Tenant"
+    - echo "Deploying to $Enviornment for $Tenant"
 
 build:
   stage: build
