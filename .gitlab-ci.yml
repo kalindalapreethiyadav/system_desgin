@@ -9,7 +9,7 @@ include:
   - local: include.yml
 
 stages:
-  - gilab_to_github_sync
+  - sync-to-github
   - pre-rocket
   - build
   - deploy
@@ -31,7 +31,7 @@ before_script:
 
 # Sync GitLab to GitHub Repo
 sync-to-github:
-  stage: sync
+  stage: sync-to-github
   image: python:3.11
   variables:
     REPO_DIR: "repo-sync"
