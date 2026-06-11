@@ -20,7 +20,7 @@
     
     - name: debug PWD
       debug:
-        msg: {{ current_dir.stdout }}
+        msg: "{{ current_dir.stdout }}"
 
     - name: print access_key
       debug:
