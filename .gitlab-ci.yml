@@ -15,6 +15,14 @@ stages:
   - post-deploy
 
 before_script:
+    - apt-get update
+    - apt-get install -y ansible docker.io wget unzip
+
+    # Install Terraform
+    - wget https://releases.hashicorp.com/terraform/1.6.6/terraform_1.6.6_linux_amd64.zip
+    - unzip terraform_1.6.6_linux_amd64.zip
+    - mv terraform /usr/local/bin/
+
     - terraform version
     - ansible --version
     - python3 --version
@@ -30,22 +38,20 @@ pre-rocket:
 
 build:
   stage: build
-  image: docker:24.0.5
-  services:
-    - docker:24.0.5-dind
-
   script:
-    - echo "Building the docker image in build stage:"
-    - docker login registry.gitlab.com
-    - docker build -t registry.gitlab.com/kpreethiyadav579/system_desgin/ .
-    - docker push registry.gitlab.com/kpreethiyadav579/system_desgin
+    - echo "Started build stage for $Enviornment for $Tenant"
+    - ansible-playbook build/main.yml
 
 deploy:
   stage: deploy
   script:
     - echo "Deploying to $Enviornment for $Tenant"
+    - echo "Started build stage for $Enviornment for $Tenant"
+    - ansible-playbook deploy/main.yml
 
 post-deploy:
   stage: post-deploy
   script:
     - echo "Completed for $Tenant"
+    - echo "Started build stage for $Enviornment for $Tenant"
+    - ansible-playbook post-deploy/main.yml
