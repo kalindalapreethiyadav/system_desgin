@@ -13,6 +13,14 @@
     - name: testing tasks
       debug:
         msg: "Hello task running ansible"
+    
+    - name: print current directory
+      command: pwd
+      register: current_dir
+    
+    - name: debug PWD
+      debug:
+        msg: current_dir
 
     - name: print access_key
       debug:
