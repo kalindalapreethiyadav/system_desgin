@@ -4,6 +4,10 @@ variables:
    Enviornment: $Enviornment
    Tenant: $Tenant
 
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "trigger"'
+  
 stages:
   - pre-rocket
   - build
@@ -12,6 +16,24 @@ stages:
 
 pre-rocket:
   stage: pre-rocket
+  script:
+    - echo "Env: $Enviornment"
+    - echo "Tenant: $Tenant"
+
+build:
+  stage: build
+  script:
+    - echo "Env: $Enviornment"
+    - echo "Tenant: $Tenant"
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Env: $Enviornment"
+    - echo "Tenant: $Tenant"
+
+post-deploy:
+  stage: post-deploy
   script:
     - echo "Env: $Enviornment"
     - echo "Tenant: $Tenant"
