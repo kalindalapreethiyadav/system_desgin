@@ -6,8 +6,8 @@
   vars: 
     env: "{{ lookup('env', 'Enviornment') }}"
     tenant: "{{ lookup('tenant', 'Tenant') }}"
-    access_key: "{{ lookup('access_key', 'aws_access_key') }}"
-    secert_key: "{{ lookup('secert_key', 'aws_secert_key') }}"
+    access_key: "{{ lookup('access_key', 'AWS_ACCESS_KEY_ID') }}"
+    secert_key: "{{ lookup('secert_key', 'AWS_SECRET_ACCESS_KEY') }}"
 
   tasks:
     - name: testing tasks
