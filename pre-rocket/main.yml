@@ -5,7 +5,7 @@
 
   vars: 
     env: "{{ lookup('env', 'Enviornment') }}"
-    tenant: "{{ lookup('tenant', ('Tenant') }}"
+    tenant: "{{ lookup('tenant', 'Tenant') }}"
 
   tasks:
     - name: testing tasks
