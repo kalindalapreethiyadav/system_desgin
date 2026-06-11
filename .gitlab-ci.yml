@@ -5,6 +5,9 @@ workflow:
   rules:
     - if: '$CI_PIPELINE_SOURCE == "trigger"'
 
+include:
+  - local: include.yml
+
 stages:
   - pre-rocket
   - build
