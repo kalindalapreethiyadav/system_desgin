@@ -1,35 +1,27 @@
 ---
-- name: excuting the configurations
+- name: executing the configurations
   hosts: localhost
   gather_facts: no
 
-  vars: 
-    env: "{{ lookup('env', 'Enviornment') }}"
-    tenant: "{{ lookup('tenant', 'Tenant') }}"
-    access_key: "{{ lookup('access_key', 'AWS_ACCESS_KEY_ID') }}"
-    secert_key: "{{ lookup('secert_key', 'AWS_SECRET_ACCESS_KEY') }}"
+  vars:
+    env: "{{ lookup('env', 'ENVIRONMENT') }}"
+    tenant: "{{ lookup('env', 'TENANT') }}"
+    access_key: "{{ lookup('env', 'AWS_ACCESS_KEY_ID') }}"
+    secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
 
   tasks:
     - name: testing tasks
       debug:
-        msg: "Hello task suning anisble"
+        msg: "Hello task running ansible"
 
     - name: print access_key
       debug:
-        msg: "$access_key- and $secert_key"
+        msg: "{{ access_key }} - and {{ secret_key }}"
 
-    - name: excuting terraform init
-      command: terraform init
+    - name: executing terraform init
+      command: terraform init -input=false
       args:
         chdir: terraform
-        
-    - name: executing terraform plan
-      command: terraform plan -out=tfplan
-      args:
-        chdir: terraform
-    
-    - name: excuting terraform apply
-      command: terraform apply -auto-approve
-      args:
-        chdir: terraform
- 
+      environment:
+        AWS_ACCESS_KEY_ID: "{{ access_key }}"
+        AWS_SECRET_ACCESS_KEY: "{{ secret_key }}"
