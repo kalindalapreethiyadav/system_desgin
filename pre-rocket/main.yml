@@ -1,6 +1,7 @@
+---
 - name: Excuting the configurations
-  host: local
-  gather_facts: "false"
+  host: localhost
+  gather_facts: no
 
   vars: 
     env: "{{ lookup('env', 'Enviornment') }}"
