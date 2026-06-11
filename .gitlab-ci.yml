@@ -1,9 +1,9 @@
 variables:
   CI_DEBUG_TRACE: "false"
 
-workflow:
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "trigger"'
+# workflow:
+#   rules:
+#     - if: '$CI_PIPELINE_SOURCE == "trigger"'
 
 include:
   - local: include.yml
@@ -17,7 +17,8 @@ stages:
 pre-rocket:
   stage: pre-rocket
   script:
-    - echo "Deploying to $Enviornment for $Tenant"
+    - echo "Started pre-rocket stage for $Enviornment for $Tenant"
+    - ansible-playbook /pre-rocket/main.yml
 
 build:
   stage: build
