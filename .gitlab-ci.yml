@@ -14,6 +14,11 @@ stages:
   - deploy
   - post-deploy
 
+before_script:
+    - terraform version
+    - ansible --version
+    - python3 --version
+
 pre-rocket:
   stage: pre-rocket
   image: ansible-playbook
@@ -23,11 +28,14 @@ pre-rocket:
 
 build:
   stage: build
-  image: docker
+  image: docker:24.0.5
+  services:
+    - docker:24.0.5-dind
+
   script:
     - echo "Building the docker image in build stage:"
     - docker login registry.gitlab.com
-    - docker build -t registry.gitlab.com/kpreethiyadav579/system_desgin .
+    - docker build -t registry.gitlab.com/kpreethiyadav579/system_desgin/ .
     - docker push registry.gitlab.com/kpreethiyadav579/system_desgin
 
 deploy:
