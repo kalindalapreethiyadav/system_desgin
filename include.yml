@@ -2,3 +2,5 @@ variables:
   Enviornment: "dev"
   Tenant: "zerohunger"
   CI_PIPELINE_SOURCE: '$CI_PIPELINE_SOURCE'
+  AWS_SECRET_ACCESS_KEY: '$AWS_SECRET_ACCESS_KEY'
+  AWS_ACCESS_KEY_ID: '$AWS_ACCESS_KEY_ID'

@@ -1,5 +1,7 @@
 variables:
   CI_DEBUG_TRACE: "false"
+  AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+  AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
 
 # workflow:
 #   rules:
