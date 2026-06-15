@@ -11,7 +11,7 @@ include:
   - local: include.yml
 
 stages:
-  # - sync-to-github
+  - sync-to-github
   - pre-rocket
   - build
   - deploy
