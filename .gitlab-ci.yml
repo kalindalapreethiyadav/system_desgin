@@ -58,7 +58,7 @@ pre-rocket:
     - echo "Started pre-rocket stage for $Enviornment for $Tenant"
     - echo "DEBUG $AWS_ACCESS_KEY_ID"
     - echo "DEBUG $AWS_SECRET_ACCESS_KEY"
-    - ansible-playbook pre-rocket/main.yml
+    - ansible-playbook pre-rocket/playbook-terraform.yml
 
 build:
   stage: build
