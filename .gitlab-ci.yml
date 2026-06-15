@@ -65,6 +65,7 @@ build:
   script:
     - echo "Started build stage for $Enviornment for $Tenant"
     - ansible-playbook build/main.yml
+    - docker login
 
 deploy:
   stage: deploy
