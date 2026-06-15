@@ -1,8 +1,7 @@
-terraform {
-  backend "s3" {
-    bucket         = "${var.Tenant}-${var.Env}"
-    key            = "envs/dev/terraform.tfstate"
-    region         = "ap-south-1"
-    encrypt        = true
-  }
+resource "aws_instance" "zerohunger-ec2" {
+    instance_type  = "t2.micro"
+    ami   = "ami-0152204c1a187337c"
+    tags = {
+        env = "dev"
+    }
 }

@@ -1,0 +1,279 @@
+Docker Command format:-
+--------------------
+New Management commands formation
+docker <command> <subcommand> [options] 
+
+Old way(Still works):
+docker <command> [options]
+
+Examples:
+1) docker version : shows client and server version. You can verify if cli can talk with engine
+2) docker info : More details about docker. Most config values of engine
+3) docker : Management commands and other commands
+
+
+docker image ls
+docker pull ImageName:Tag
+docker pull alpine:latest (the default tag for any image is latest)
+
+docker container run -d -it --name ContainerName ImageName:Tag
+docker container stop ContainerIDorContainerName
+docker container rm ContainerID	
+docker container run --publish 80:80 --name alc-web  -dit nginx:latest
+ where -d: detach (--detach)
+       -e: env list (--env)
+       -i: interactive (--interactive)
+       -t: tty  (--tty) Allocate pseudo tty
+       -u: user (--user)
+docker container exec -it ContainerName /bin/bash  : execute /bin/bash interactively on the container ie login into the container
+docker ps (old version)
+or
+docker ps -a
+the above is same as
+docker container ls
+or
+docker contianer ls -a
+
+docker cotainer logs ContainerNmae : Lists logs in container
+docker container top containerName
+docker container stats ContainerName : to know statistics of each container.  Live performance data for all containers.
+
+docker container run command:-
+Below are the points related to docker container run command:
+1. Looks for the image locally in image cache, doesnt find anything, then looks in remote repository (default to https://hub.docker.com).
+2. Docker load the latest version  of the image (default tag is: tatest, ex: nginx:latest)
+3. Creates a new container based on that image and prepares to start.
+4. Gives it a virual ip on a private network inside docker image
+5. Openup port (ex: nginx port 80) on a host and forward to port (such as port 80 ) in docker container
+6. Start container by using command(cmd) in the image docker file
+7. Containers are not mini virtual machines, and they are just processes. They are limited to what resources that tey can access. They exit when process stops
+examples:-
+1.docker container run --publish 80:80 --name alc-web -d nginx:latest
+2.docker container run [options] image [command] [args...]
+3.docker container ls 
+4.docker container run -p 80:80 -d --name alc_web_nginx nginx:1:11
+5.docker container run -p 8080:80 -d --name alc_web_apache httpd
+6.docker container exec -it alc_web_apache /bin/sh
+7.docker container run -it --name my_alc_web nginx /bin/bash
+  Note: The hostname of the container is same as the container name
+==> Run a new container interactively by executing a command (ex: bash):
+    docker container run -it --name myweb nginx /bin/bash
+==> Run a command in a running container:
+    docker container exec [options] container command [arg ... ]
+    where
+     options:
+     -d or --detach : detach mode
+     -e or --env list
+     -i, --interactive
+     -t, --tty
+     -u, --user string
+==>docker ps : this is old style and is same as 'docker container ls' command
+   You can refer docker container --help for options
+==>to list logs in a container:
+   docker container logs container_name
+   ex:docker container logs web_apache
+==>to see processes running in a container
+   docker container top Container_name
+==>To know statistics of each container:
+   docker container stats container_name
+
+Note: alpine is a small security focused linux distribution, designed very small.
+use command: docker pull alpine to pull the image from docker hub
+==>
+   docker pull alpine
+   docker image ls
+   docker container run -it aplpine /bin/sh
+==>To inspect the container:
+   docker container inspect Container_Name
+   The docker container inspect command is used to look at container, how the container is configured and its meta data configuration. You will get jason array, how the container started. The Metadata is all about networking, state, configuration etc.,
+    Syntax: docker container inspect Container_Name
+Docker Networking:
+==>Docker is an OS level virtualization software platform that help users to develop, deply, manage and run applications in the docker contianer with all their library dependencies.
+==>Docker Networking enables users to link a docker container to as many networks as required. Docker networks are used to provide complete isolation for docker container. One can add containers to more than one network. Containers netwroking refers to the ability for containers to connect and communicate each other, or to non-docker work loads.
+Publishing ports:-
+By default when you create a container or run a container, the container doesnt expose any of its ports to outside world. Use --publish or -p option to make a port available to services outside of docker. This creates a firewall rule in a host, mapping a container port to host to the outside world.
+==>Each container connected to a private virtual netowrk called "Bridge" 
+==>Each virtual network routes thorugh NAT firewall on host ip.
+==>All containers on a virtual network can talk to each other without -p option.
+==>Best practice is to create a new virtual network for each applicaton.
+==>The default networks work well in many cases, but easy to swap out parts to customise it. 
+==>You can make new virtual network works, can attach containers to more than one network or none.
+==>You can skip virtual networks and use HostIP (--net=host).
+==>You can use different docker network drivers to gain new abilities. The underlying software that provide core networking functionality is called 'Drivers'. Docker networking subsystem is pluggable using drivers.
+==>The default network driver is "Bridge"
+   1.Bridge: This is default network driver, used to communicate one container with another within same host.
+   2.Host: Host drivers removes network isolation between container and docker hosts and use host netorking directly.
+   3.Overlay: Overlay network drivers creates a distributed network among multiple docker daemon hosts (used in cluster).
+   4.IPVLAN:
+   5.MACVLAN
+   6.None: refers to isolate container from host as well s other containers.
+Goals of Docker Networking:-
+---------------------------
+
+		flexibility		cross platform
+                        ^		 ^
+                         .              .
+                          .            .
+                           ------------
+	   scalability<---|  Docker  |---> De-Centralised
+                           -----------
+                          .            .
+                         .              .
+                        v                v
+              User friendly           Support
+
+1.Flexibility:
+Docker provides flexibility by enabling any number of application on various platforms to communicate with each other.
+2.Cross Platform:
+Docker can be easily used in cross platform which works across various servers with the help of docker swarm cluster.
+3.Scalability: Docker is a fully distributed network, which enables application to grow and scale individually while ensuring performance
+4.De-Centralized: Docker uses de-centralized network, which enables the capability to have the applications spread and high available. In the event that a container of a host is sudenly missing from your pool of resoruces, you either bring up an additional resource or pass over to services that are still available.
+5.User-friendly: Docker makes it easy to automate the deployment of services making them easy to use in day to day life.
+6.Support: Docker offers out of the box support. So the ability to use the docker enterprise edition and get all functionalities very easy and straight forward and this makes docker platform to be very easy to use.
+a)show docker network
+  docker network ls
+b)inspect a network
+  docker network inspect
+c)create a network
+  docker network create --driver
+d)Attach a network to a container
+  docker network connect
+e)detach network from container
+  docker network disconnect
+IPAM:-
+IP Address Management is an integrated suite of tools to enable end to end planning, deployment, managing and monitoring of your ip address infrastructure with a rich user experience. IPAM integrates DNS and DHCP so that each is aware of changes in other i.e. DNS knowing of ip address taken by the client via DHCP and updating itself according.
+IPAM Benefits:
+ a)Network Health Management
+ b)Centralized repository creation
+ c)specification of admin tools
+ d)Reduce complexity
+ e)Enhance Reliability
+ f)Provide high end security to NW and connected Devices
+ g)Helps with compliances
+
+Create a docker network:
+a)docker network create --driver bridge alc_net0
+verify with docker network ls
+NETWORK ID     NAME       DRIVER    SCOPE
+97dc33ce3a3e   bridge     bridge    local
+061b4a5662cb   host       host      local
+890cf173ac84   none       null      local
+inspect the same wit docker inspect alc_net0. observer its network and gateway
+Also observe that you got new bridge interface (use ip a or brctl show)
+b)docker network inspect bridge
+  check container attached to this network called 'bridge'
+  check IPAM section which assigns ip address, managed DNS etc.,
+Note:-
+1.Network 'host': It gains performance by skipping virtual network, but sacrifies of container model security.
+2.Network 'none': Removes 'eth0' and only leaves the container with local host interface.
+
+'docker network create' : 
+ --> spawns a new network to attach containers to.
+ --> docker network create my_alc_net
+ --> docker network ls
+Note:- check docker network create --help to explore more options
+Running a container with given network:-
+--> docker container run -d --name Cont_name --network Nw_name ImageName 
+    ex:- docker container run -d --name alc_nginx --network my_alc_net nginx
+--> Use docker network inspect my_alc_net
+        check container section, verify ip allocated to newly created container
+--> We dont actually have to start new containers, because we can unplug and replug existing network on existing containers.
+ ex:-
+    docker network --help : Check the usage of the command
+    docker network connect NetworkID ContainerID
+    to disconnect:
+    docker network disckonnect NetworkID ContainerID
+Docker Networks default security:-
+1.Create your applications in a such a way frontend/backend exists on the same docker network
+2.Their inter communication never leaves host, hence it is secured
+3.All externally exposed ports closed by default. You must manually expose via -p or --publish option, which is better default security.
+4.Using Static IPs for container communication is an anti-pattern. You need to avoid it.
+5.Containers constantly launching, removing, moving, expanding, shrinking cause to no longer rely on ip address for their inter communication. The solution for htis is DNS naming.
+6.Docker uses the container names as equivalent of a hostname and uses hostname to talk to each other.
+7.Docker daemon has a built-in DNS server that contianers use by default.
+8.Docker defaults the hostname to the containers name, but you can also set aliases.
+9.Please note taht the default bridge network has one disadvantage, where as it does not have DNS server built-in by default.
+
+Note:
+a)when we enter into the container in attach mode, while exiting the container, will also stop the container
+b)When we enter into the container in exec mode, while exiting the container, it does not stop the contianer, it will continue to run.
+  docker container --attach cont_name
+  docker container exec -it cont_name /bin/sh
+c)We can enter into the container in two ways
+   a) attach b)exec
+Examples:
+--> docker container run -dit --name my_alc_01 alpine ash
+           -d : detatch, -it: interactive, alpine is image name, ash is shell name
+-->docker container ls
+-->createing a new network(bridge)
+   docker network create alc_net --driver bridge
+-->connecting containers to the network (bridge)
+   docker network connect alc_net my_alc_01
+-->Inspect the network (check subnect, gateway, container's ip address etc)
+   docker network inspect alc_net
+-->Enter into the container and ping to another container. Do this activity by creating two containers and ping them using ping command. if ping command doesnt exists, install it.
+-->Create a container with already created, existing network
+   docker container run -dit --name alc_cont_1 --network alc_net ImageName Command
+Docker Volumes:
+-->Containers are usually immuntable and ephemeral
+-->Immunatale infrastructure:
+   Only re-deply containers, they never change
+-->Persistent Storage: 2 ways; volumes and bind mounts
+Volumes: Make a special location outside of the containers
+Bind Mounts: Link container path to host path
+
+                             ..............................
+                             :            HOST            :
+			     :  ........................  :
+		             :  .       Container      :  :
+                             :  : /var/lib/myql/data   :--:---->Virtual Filesystem  
+                             :  :......................:  :     Container Directory
+			     :                            :
+                             :  ........................  :
+                             :  :   /home/mount/data   :--:-----> Host file system 
+			     :  ........................  :       (Physical Filesystem)
+                             :                            :
+                             :............................:
+-->The Data in the virtual filesystem is removed when container is restarted/removed and when started it, it starts from fresh state
+-->The solution to make the data persistent that the application is making with docker volumes.
+-->Folder in the physical host file system is mounted into the virtual filesystem of docker. When container writes to filesystem, it gets replicated/automatically written in host filesystem directory. In this case, when container restarted, it gets the data from host filesystem.
+-->Docker volumes are used for data persistence in the container. Example, databases, stateful applications etc.,you would want to use docker volumes.
+-->Docker volumes are preferred mechanism for persistent data. Docker volume is a storae where data remains when container is turned off, such as databases, other stateful applications.
+1.Host Volumes:
+--> Exists on the docker host filesystem
+--> Access within the container
+-->This type of volumes are ideal for simple projects
+   ex:- docker run -v /path/to/host:/path/in/Container
+                where -v: volume
+2.Anonymous Volumes:
+-->Docker handles storage location(host)
+-->Difficult to refer to the multiple containers
+-->Anonymous docker volumes are named by docker, the name is random hash code. 
+-->Docker creates a directory under "/var/lib/docker/volumes/Volume_name/_data
+3.Named Volumes:
+-->Named volumes are like anonymous volumes
+-->Docker manages location of volume
+-->Difference is, we name the volume.
+
+Commands:-
+docker volume create : Creates anonymous volume in /var/lib/docker/volumes/XXXHashCodeXXX/_data
+docker volume create vol_name : Create a volume /var/lib/docker/volumes/vol_name/_data
+docker volume ls  : list the existing volumes
+docker volume rm vol_name : removes the volume
+docker volume prune : removes anonymous volumes that are not associated with any container
+docker volume inspect volume_name
+Examples:
+a)docker container run --volume /mydata -dit --name mydata_web -p 80:80 nginx /bin/bash -->  anonymous volume
+b)docker container run --volume mydatavol:/mydata -dit --name mydata_web -p 80:80 nginx /bin/bash --> named volume
+c)sudo mkdir /myWorks
+  docker container run --volume /myWorks:/mydata -dit --name mydata_web -p 80:80 nginx /bin/bash -->binded volume
+  The above type of volumes you should use in production
+Note: You dont have any way to add volume in running containers.
+d)copy some content to docker volume: 
+  Syntax: docker cp [options] source destination
+          docker cp [options] /local/dir/orFile  container:/DirPath   --->local to container filesystem.
+          or
+          docker cp [options] container:/srcDirPath   /local/DirPath  --->Container to local Filesystem
+  Example:
+ 	  docker cp -a /etc /myweb:/tmp
+          where /etc/ source and /myweb:/tmp is destination

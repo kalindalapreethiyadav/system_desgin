@@ -2,6 +2,8 @@ variables:
   CI_DEBUG_TRACE: "false"
   AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
   AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+  REGION: $AWS_Region
+  BUCKET_NAME: $Environment-$Tenant-bucket
 
 # workflow:
 #   rules:
@@ -64,6 +66,26 @@ build:
   stage: build
   script:
     - echo "Started build stage for $Enviornment for $Tenant"
+    - echo "Configuring AWS CLI..."
+    - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+    - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+    - aws configure set default.region $REGION
+        
+    - |
+          if aws s3api head-bucket --bucket "$BUCKET_NAME" 2>/dev/null; then
+            echo "Bucket already exists. Skipping creation."
+          else
+            echo "Bucket does not exist. Creating..."
+            aws s3api create-bucket \
+              --bucket "$BUCKET_NAME" \
+              --region "$REGION" \
+              --create-bucket-configuration LocationConstraint="$REGION"
+            echo "Bucket created."
+          fi
+
+    - echo "Creating S3 bucket..."
+    - echo "S3 bucket created successfully!"
+
     - ansible-playbook build/main.yml
     - docker login
 

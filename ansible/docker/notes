@@ -1,0 +1,147 @@
+[root@ip-172-31-26-89 /]# history
+    1  yum install docker -y
+    2  clear
+    3  docker --version
+    4  docker container run hello-world
+    5  systemctl enable docker
+    6  systemctl start docker
+    7  systemctl status docker
+    8  docker container run hello-world
+    9  clear
+   10  docker container run -it alpine /bin/sh
+   11  docker container run -dt alpine /bin/sh
+   12  docker container ls
+   13  docker container stop 719bcaf53d92
+   14  docker container ls
+   15  docker container ls -a
+   16  docker container start 719bcaf53d92
+   17  docker container ls -a
+   18  docker container ls 719bcaf53d92
+   19  docker ps
+   20  docker ps -al
+   21  clear
+   22  docker image ls
+   23  clear
+   24  docker version
+   25  docker --version
+   26  docker info
+   27  clear
+   28  docker container ls
+   29  docker container ls -a
+   30  docker container rm 8c15fcc3e282
+   31  docker container rm 7173b96d0aef
+   32  docker stop 719bcaf53d92
+   33  dorcker container rm 719bcaf53d92
+   34  docker container rm 719bcaf53d92
+   35  docker container ls -a
+   36  docker image ls
+   37  docker container run -d -it --name bramu alpine:latest /bin/sh
+   38  docker container ls
+   39  docker cotainer -it bramu
+   40  docker container -it bramu
+   41  docker container -it bramu /bin/sh
+   42  docker container -it bramu -- /bin/sh
+   43  docker container exec -it bramu -- /bin/sh
+   44  docker container exec -it bramu /bin/sh
+   45  docker container ls
+   46  clear
+   47  cd /var/lib/docker/
+   48  ls -l
+   49  cd containers
+   50  ls -l
+   51  cd 93a387952164ddf3cb71f3b7f1be1ed4e033f9ed19e1a69f224d6c700a8fbccf
+   52  ll
+   53  cd ..
+   54  pwd
+   55  cd ..
+   56  cd image/
+   57  ls -l
+   58  cd overlay2/
+   59  ll
+   60  cd imagedb/
+   61  ls
+   62  cd ..
+   63  tree
+   64  cd distribution/
+   65  ll
+   66  cd ..
+   67  ls -l
+   68  cd ..
+   69  ls -l
+   70  clear
+   71  docker image --help
+   72  docker image pull nginx:latest
+   73  docker conta run -d -it -p 80:80 --name myweb nginx
+   74  clear
+   75  docker container run -d -it -p 80:80 --name myweb nginx
+   76  docker container ls -a
+   77  docker container ls --all
+   78  docker exec -it myweb
+   79  docker exec -it myweb /bin/sh
+   80  ifconfig -a
+   81  docker network ls
+   82  clear
+   83  docker container ls
+   84  docker inspect myweb
+   85  docker network ls
+   86  docker inspect 5c2249fa7642
+   87  docker volume ls
+   88  docker volume ls -a
+   89  docker volume ls
+   90  docker volume create vol_bramu
+   91  docker volume ls
+   92  docker container stop myweb
+   93  docker container rm myweb
+   94  docker conta run -d -it -p 80:80 --volume vol_bramu:/bramu --name myweb nginx
+   95  docker container run -d -it -p 80:80 --volume vol_bramu:/bramu --name myweb nginx
+   96  docker contianer ls
+   97  docker container ls
+   98  docker exec -it myweb /bin/sh
+   99  cd /var/lib/docker/volumes/
+  100  ll
+  101  cd vol_bramu/
+  102  ll
+  103  cd _data
+  104  ll
+  105  touch ramu{1..10}.txt
+  106  ll
+  107  cd
+  108  docker exec -it myweb /bin/sh
+  109  clear
+  110  docker volume create
+  111  cd /var/lib/docker/volumes/
+  112  ll
+  113  cd c315207ea8728004e9283c41590e3345a4bc65b5b66f38618fef27ae958984dd/
+  114  cd _data
+  115  ll
+  116  cd ..
+  117  cd
+  118  docker volume ls
+  119  docker volume rm c315207ea8728004e9283c41590e3345a4bc65b5b66f38618fef27ae958984dd
+  120  docker volume ls
+  121  docker conta run -d -it -p 80:80 --volume /bramu --name myweb1 nginx
+  122  docker container run -d -it -p 80:80 --volume /bramu --name myweb1 nginx
+  123  docker volume ls
+  124  docker exec -it myweb1 /bin/sh
+  125  docker container ls
+  126  docker volume ls -a
+  127  docker container ls -a
+  128  docker container rm myweb1
+  129  docker container run -d -it -p 80:81 --volume /bramu --name myweb1 nginx
+  130  docker container rm myweb1
+  131  docker container run -d -it -p 81:80 --volume /bramu --name myweb1 nginx
+  132  docker exec -it myweb1 /bin/sh
+  133  mkdir /mysap
+  134  cd /mysap
+  135  touch sap{1..10}.txt
+  136  ll
+  137  cd ..
+  138  docker container run -d -it -p 82:80 --volume /mysap:/bramu --name myweb2 nginx
+  139  docker exec -it myweb2 /bin/sh
+  140  docker container ls
+  141  docker container logs myweb2
+  142  docker container top myweb2
+  143  docker container stats myweb2
+  144  history
+
+  
