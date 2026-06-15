@@ -60,12 +60,6 @@ pre-rocket:
     - echo "Started pre-rocket stage for $Enviornment for $Tenant"
     - echo "DEBUG $AWS_ACCESS_KEY_ID"
     - echo "DEBUG $AWS_SECRET_ACCESS_KEY"
-    - ansible-playbook pre-rocket/playbook-terraform.yml -e @include.yml
-
-build:
-  stage: build
-  script:
-    - echo "Started build stage for $Enviornment for $Tenant"
     - echo "Configuring AWS CLI..."
     - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
     - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
@@ -86,6 +80,12 @@ build:
     - echo "Creating S3 bucket..."
     - echo "S3 bucket created successfully!"
 
+    - ansible-playbook pre-rocket/playbook-terraform.yml -e @include.yml
+
+build:
+  stage: build
+  script:
+    - echo "Started build stage for $Enviornment for $Tenant"
     - ansible-playbook build/main.yml
     - docker login
 
