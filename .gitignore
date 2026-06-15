@@ -1,3 +1,5 @@
 .env
 *.env
 *.pem
+*.terraform
+*.terraform.lock.hcl
