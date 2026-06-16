@@ -87,6 +87,7 @@ build:
   stage: build
   script:
     - echo "Started build stage for $Enviornment for $Tenant"
+    - ansible-playbook build/playbook-terraform.yml
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - include_task liberies/docker-service.yml
   variables:

@@ -1,13 +1,25 @@
 ---
-- name: Excuting the configurations
+- name: executing the docker configurations
   hosts: localhost
   gather_facts: no
 
-  vars: 
-    env: "{{ lookup('env', 'Enviornment') }}"
-    tenant: "{{ lookup('tenant', ('Tenant') }}"
+  # vars:
+  #   env: "{{ lookup('env', 'ENVIRONMENT') }}"
+  #   tenant: "{{ lookup('env', 'TENANT') }}"
+  #   access_key: "{{ lookup('env', 'AWS_ACCESS_KEY_ID') }}"
+  #   secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
+
+  # environment:
+  #   AWS_ACCESS_KEY_ID: "{{ access_key }}"
+  #   AWS_SECRET_ACCESS_KEY: "{{ secret_key }}"
+
 
   tasks:
     - name: testing tasks
       debug:
         msg: "Hello task suning anisble"
+
+    - name: Include Docker setup
+      include_tasks: libraries/docker-service.yml
+      vars:
+        docker_service_state: started

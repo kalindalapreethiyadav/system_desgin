@@ -2,30 +2,17 @@
 - name: executing the configurations
   hosts: localhost
   gather_facts: no
+  # vars:
+  #   env: "{{ lookup('env', 'ENVIRONMENT') }}"
+  #   tenant: "{{ lookup('env', 'TENANT') }}"
+  #   access_key: "{{ lookup('env', 'AWS_ACCESS_KEY_ID') }}"
+  #   secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
 
-  vars:
-    env: "{{ lookup('env', 'ENVIRONMENT') }}"
-    tenant: "{{ lookup('env', 'TENANT') }}"
-    access_key: "{{ lookup('env', 'AWS_ACCESS_KEY_ID') }}"
-    secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
+  # environment:
+  #   AWS_ACCESS_KEY_ID: "{{ access_key }}"
+  #   AWS_SECRET_ACCESS_KEY: "{{ secret_key }}"
 
-  environment:
-    AWS_ACCESS_KEY_ID: "{{ access_key }}"
-    AWS_SECRET_ACCESS_KEY: "{{ secret_key }}"
-
-  tasks:
-    - name: testing tasks
-      debug:
-        msg: "Hello task running ansible"
-
-    - name: Generate terraform.auto.tfvars
-      copy:
-        dest: terraform/terraform.auto.tfvars
-        content: |
-          access_key = "{{ lookup('env', 'AWS_ACCESS_KEY_ID') }}"
-          secret_key = "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
-          region     = "us-east-1"
-        
+  tasks:        
     - name: print current directory
       command: pwd
       register: current_dir
