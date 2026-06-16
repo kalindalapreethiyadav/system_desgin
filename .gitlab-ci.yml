@@ -2,9 +2,12 @@ variables:
   CI_DEBUG_TRACE: "false"
   AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
   AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+  CI_REGISTRY_USER: $CI_REGISTRY_USER
+  CI_REGISTRY: $CI_REGISTRY
   REGION: $AWS_Region
   Environment: "dev"
   Tenant: "zerohunger"
+
 
 # workflow:
 #   rules:
@@ -94,10 +97,15 @@ pre-rocket:
 
 build:
   stage: build
+  before_script:
+      - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
     - echo "Started build stage for $Enviornment for $Tenant"
-    - ansible-playbook build/main.yml
-    - docker login
+    - docker image ls
+  variables:
+    CI_REGISTRY: registry.gitlab.com
+
+
 
 deploy:
   stage: deploy
