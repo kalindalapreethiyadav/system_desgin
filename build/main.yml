@@ -17,9 +17,10 @@
       vars:
         docker_service_state: started
         image_name: "{{ Tenant }}-{{ Environment }}-image"
-        build_context: "Hello"
+        build_context: .
         container_name: "{{ Tenant }}-{{ Environment }}-conatiner"
         container_port: 80
+        project_path: /{{ Tenant }}/{{ Environment }}/
 
         
 
