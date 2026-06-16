@@ -3,14 +3,12 @@
   package:
     name: docker.io
     state: present
-  when: ansible_virtualization_type != "docker"
 
 - name: Start Docker (VM only)
   service:
     name: docker
     state: started
     enabled: yes
-  when: ansible_virtualization_type != "docker"
 
 - name: Login to GitLab registry
   command: >
