@@ -1,9 +1,9 @@
 terraform {
   backend "s3" {
-    bucket         = "${var.Tenant}-${var.Enviornment}-bucket"
-    key            = "${var.Tenant}/${var.Enviornment}/terraform.tfstate"
-    region         = "ap-south-1"
-    encrypt        = true
+    bucket         = "$Environment-$Tenant-bucket-bucket"
+    key            = "terraform.tfstate"
+    region         = "us-east-1"
+    encrypt        = false
     #dynamodb_table = "terraform-locks" #
     use_lockfile = true
   }
