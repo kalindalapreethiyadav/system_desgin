@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket         = "$Environment-$Tenant-bucket"
+    bucket         = var.BUCKET_NAME
     key            = "terraform.tfstate"
     region         = "us-east-1"
     encrypt        = false
