@@ -3,16 +3,9 @@
   hosts: localhost
   gather_facts: no
 
-  # vars:
-  #   env: "{{ lookup('env', 'ENVIRONMENT') }}"
-  #   tenant: "{{ lookup('env', 'TENANT') }}"
-  #   access_key: "{{ lookup('env', 'AWS_ACCESS_KEY_ID') }}"
-  #   secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
-
-  # environment:
-  #   AWS_ACCESS_KEY_ID: "{{ access_key }}"
-  #   AWS_SECRET_ACCESS_KEY: "{{ secret_key }}"
-
+  environment:
+    Environment: "{{ lookup('env', 'ENVIRONMENT') }}"
+    Tenant: "{{ lookup('env', 'TENANT') }}"
 
   tasks:
     - name: testing tasks
@@ -23,3 +16,11 @@
       include_tasks: libraries/docker-service.yml
       vars:
         docker_service_state: started
+        image_name: "{{ Tenant }}-{{ Environment }}-image"
+        build_context: "Hello"
+        container_name: "{{ Tenant }}-{{ Environment }}-conatiner"
+        container_port: 80
+
+        
+
+

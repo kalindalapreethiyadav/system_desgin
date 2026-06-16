@@ -28,3 +28,25 @@
 - name: List images
   command: docker image ls
 
+
+- name: Build Docker image
+  command: >
+    docker build -t {{ image_name }} {{ build_context }}
+  args:
+    chdir: "{{ project_path }}"
+  register: build_output
+
+- name: Show build output
+  debug:
+    msg: "{{ build_output.stdout }}"
+
+- name: Run Docker container
+  command: >
+    docker run -d --name {{ container_name }}
+    -p {{ host_port }}:{{ container_port }}
+    {{ image_name }}
+  register: run_output
+
+- name: Show container status
+  debug:
+    msg: "{{ run_output.stdout }}"
