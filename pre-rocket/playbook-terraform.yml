@@ -46,7 +46,12 @@
 
     - name: Show readable output
       debug:
-        msg: "{{ tf_init.stdout_lines }}"
+        msg: |
+              Directory Output:
+              -----------------
+              stdout: {{ tf_init.stdout }}
+              rc: {{ tf_init.rc }}
+              stderr: {{ tf_init.stderr }}
 
     - name: Executing terraform plan
       command:
@@ -60,7 +65,12 @@
 
     - name: Show readable output
       debug:
-        msg: "{{ tf_plan.stdout_lines }}"
+        msg: |
+              Directory Output:
+              -----------------
+              stdout: {{ tf_plan.stdout }}
+              rc: {{ tf_plan.rc }}
+              stderr: {{ tf_plan.stderr }}
 
     - name: Executing terraform apply
       command:
@@ -75,4 +85,10 @@
     
     - name:  print terraform apply log
       debug:
-        msg: "{{ tf_plan.stdout_lines }}"
+        msg: |
+              Directory Output:
+              -----------------
+              stdout: {{ tf_apply.stdout }}
+              rc: {{ tf_apply.rc }}
+              stderr: {{ tf_apply.stderr }}
+
