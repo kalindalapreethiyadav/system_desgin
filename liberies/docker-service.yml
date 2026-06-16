@@ -1,0 +1,30 @@
+---
+- name: Start Docker
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: Login to GitLab registry
+  command: >
+    echo "{{ CI_REGISTRY_PASSWORD }}" |
+    docker login registry.gitlab.com
+    -u "{{ CI_REGISTRY_USER }}" --password-stdin
+
+- name: Ensure Docker is running
+  service:
+    name: docker
+    state: "{{ docker_service_state }}"
+    enabled: yes
+
+- name: Check Docker status
+  command: docker info
+  register: docker_status
+
+- debug:
+    msg: "{{ docker_status.stdout }}"
+
+
+- name: List images
+  command: docker image ls
+

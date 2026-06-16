@@ -24,17 +24,12 @@ stages:
   - post-deploy
 
 before_script:
-    - apt-get update
-    - apt-get install -y ansible docker.io wget unzip
-
-    # Install Terraform
-    - wget https://releases.hashicorp.com/terraform/1.6.6/terraform_1.6.6_linux_amd64.zip
-    - unzip terraform_1.6.6_linux_amd64.zip
-    - mv terraform /usr/local/bin/
-
-    - terraform version
-    - ansible --version
-    - python3 --version
+  - apt-get update -qq
+  - apt-get install -y -qq ansible awscli
+  - wget -q https://releases.hashicorp.com/terraform/1.6.6/terraform_1.6.6_linux_amd64.zip
+  - unzip -q terraform_1.6.6_linux_amd64.zip
+  - mv terraform /usr/local/bin/
+  - terraform version
 
 # Sync GitLab to GitHub Repo
 sync-to-github:
@@ -53,13 +48,6 @@ sync-to-github:
 
 pre-rocket:
   stage: pre-rocket
-  before_script:
-    - apt-get update -qq
-    - apt-get install -y -qq ansible awscli
-    - wget -q https://releases.hashicorp.com/terraform/1.6.6/terraform_1.6.6_linux_amd64.zip
-    - unzip -q terraform_1.6.6_linux_amd64.zip
-    - mv terraform /usr/local/bin/
-    - terraform version
   script:
     - echo "Started pre-rocket stage for $Enviornment for $Tenant"
     # Creation of S3 bucket to store state file
@@ -97,13 +85,10 @@ pre-rocket:
 
 build:
   stage: build
-  before_script:
-    - apt-get update
-    - apt-get install -y -qq ansible docker.io wget unzip
   script:
     - echo "Started build stage for $Enviornment for $Tenant"
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
-    - docker image ls
+    - include_task liberies/docker-service.yml
   variables:
     CI_REGISTRY: registry.gitlab.com
 
