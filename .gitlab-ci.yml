@@ -98,17 +98,12 @@ pre-rocket:
 build:
   stage: build
   image: docker:latest
-  services:
-    - docker:dind  
-  before_script:
-      - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
     - echo "Started build stage for $Enviornment for $Tenant"
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - docker image ls
   variables:
     CI_REGISTRY: registry.gitlab.com
-
-
 
 deploy:
   stage: deploy
