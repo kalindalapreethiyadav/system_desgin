@@ -97,7 +97,9 @@ pre-rocket:
 
 build:
   stage: build
-  image: docker:latest
+  before_script:
+    - apt-get update
+    - apt-get install -y -qq ansible docker.io wget unzip
   script:
     - echo "Started build stage for $Enviornment for $Tenant"
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
