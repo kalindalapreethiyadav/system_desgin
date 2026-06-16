@@ -46,7 +46,7 @@
 
     - name: Show readable output
       debug:
-        msg: "{{ tf_init | to_nice_json }}"
+        msg: "{{ tf_init.stdout_lines }}"
 
     - name: Executing terraform plan
       command:
@@ -60,7 +60,7 @@
 
     - name: Show readable output
       debug:
-        msg: "{{ tf_plan | to_nice_json }}"
+        msg: "{{ tf_plan.stdout_lines }}"
 
     - name: Executing terraform apply
       command:
@@ -75,4 +75,4 @@
     
     - name:  print terraform apply log
       debug:
-        msg: "{{ tf_apply | to_nice_json }}"
+        msg: "{{ tf_plan.stdout_lines }}"
