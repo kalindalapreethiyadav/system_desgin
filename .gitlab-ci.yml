@@ -66,12 +66,12 @@ pre-rocket:
     - aws configure set default.region $REGION
         
     - |
-          if aws s3api head-bucket --bucket "$BUCKET_NAME" 2>/dev/null; then
+          if aws s3api head-bucket --bucket "$Environment-$Tenant-bucket-bucket" 2>/dev/null; then
             echo "Bucket already exists. Skipping creation."
           else
             echo "Bucket does not exist. Creating..."
             aws s3api create-bucket \
-              --bucket "$BUCKET_NAME" \
+              --bucket "$Environment-$Tenant-bucket-bucket" \
               --region "$REGION" \
               --create-bucket-configuration LocationConstraint="$REGION"
             echo "Bucket created."
