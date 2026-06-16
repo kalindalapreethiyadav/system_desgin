@@ -24,11 +24,6 @@
 - debug:
     msg: "{{ docker_status.stdout }}"
 
-
-- name: List images
-  command: docker image ls
-
-
 - name: Build Docker image
   command: >
     docker build -t {{ image_name }} {{ build_context }}
@@ -50,3 +45,4 @@
 - name: Show container status
   debug:
     msg: "{{ run_output.stdout }}"
+
