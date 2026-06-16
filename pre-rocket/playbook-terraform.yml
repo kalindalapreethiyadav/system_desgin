@@ -46,12 +46,7 @@
 
     - name: Show readable output
       debug:
-        msg: |
-              Directory Output:
-              -----------------
-              stdout: {{ tf_init.stdout }}
-              rc: {{ tf_init.rc }}
-              stderr: {{ tf_init.stderr }}
+        msg: "{{ tf_init | to_nice_json }}"
 
     - name: Executing terraform plan
       command:
@@ -65,12 +60,7 @@
 
     - name: Show readable output
       debug:
-        msg: |
-              Directory Output:
-              -----------------
-              stdout: {{ tf_plan.stdout }}
-              rc: {{ tf_plan.rc }}
-              stderr: {{ tf_plan.stderr }}
+        msg: "{{ tf_plan | to_nice_json }}"
 
     - name: Executing terraform apply
       command:
@@ -85,10 +75,4 @@
     
     - name:  print terraform apply log
       debug:
-        msg: |
-              Directory Output:
-              -----------------
-              stdout: {{ tf_apply.stdout }}
-              rc: {{ tf_apply.rc }}
-              stderr: {{ tf_apply.stderr }}
-
+        msg: "{{ tf_apply | to_nice_json }}"
