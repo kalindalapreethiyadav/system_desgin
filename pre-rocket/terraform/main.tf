@@ -15,11 +15,9 @@ module "vpc-main" {
 
 }
 
-
 module "s3" {
   source = "./modules/s3"
-
-  bucket_name = "my-unique-bucket-12345"
+  bucket_name = "dev-zerohub-app-bucket"
 }
 
 module "aws_iam_role" {
@@ -38,4 +36,8 @@ module "alb" {
   vpc_id     = module.vpc.vpc_id
   subnet_ids = module.vpc.public_subnet_ids
   instance_id = module.ec2.instance_id
+}
+
+module "igw" {
+  source = "./modules/igw"
 }

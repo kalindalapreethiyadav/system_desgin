@@ -13,6 +13,14 @@ output "public_subnet_id" {
   value = aws_subnet.public[0].id
 }
 
+output "public_subnet_name" {
+  value = aws_subnet.public[0].name
+}
+
 output "public_subnet_ids" {
   value = aws_subnet.public[*].id
+}
+
+output "public_subnet_names" {
+  value = aws_subnet.public[*].name
 }

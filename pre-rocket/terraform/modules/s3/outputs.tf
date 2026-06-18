@@ -9,3 +9,6 @@
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
 ####################################################################
 
+output "zerohunger_s3_bucket" {
+  value = aws_s3_bucket.zerohunger_s3_bucket.name
+}

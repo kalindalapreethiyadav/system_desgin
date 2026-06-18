@@ -9,6 +9,6 @@
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
 ####################################################################
 
-resource "aws_s3_bucket" "bucket" {
+resource "aws_s3_bucket" "zerohunger_s3_bucket" {
   bucket = var.bucket_name
 }

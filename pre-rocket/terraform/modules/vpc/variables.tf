@@ -9,3 +9,6 @@
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
 ####################################################################
 
+variable "cidr_block" {
+  type = string
+}
