@@ -18,6 +18,7 @@ variable "region" {
 
 variable "ec2_instance_profile_name" {
     type = string
+    default = "ec2-profile-name"
 }
 
 
