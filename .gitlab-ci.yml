@@ -71,9 +71,25 @@ pre-rocket:
               --region "$REGION" \
               --create-bucket-configuration LocationConstraint="$REGION"
           fi
-          echo "Bucket created."
-        fi
 
+          echo "Bucket created. Waiting for availability..."
+
+          for i in {1..10}; do
+            if aws s3api head-bucket --bucket "$Environment-$Tenant-bucket" 2>/dev/null; then
+              echo "Bucket is now available "
+              break
+            else
+              echo "Waiting for bucket... attempt $i"
+              sleep 5
+            fi
+
+            if [ "$i" -eq 10 ]; then
+              echo "Bucket not ready after waiting "
+              exit 1
+            fi
+          done
+        fi
+        
     - echo "Creating S3 bucket..."
     - echo "S3 bucket created successfully!"
     # Trigger terraform playbook
