@@ -24,8 +24,8 @@ stages:
   - post-deploy
 
 before_script:
-  - apt-get update -qq
-  - apt-get install -y -qq ansible awscli
+  - apt-get update -qq > /dev/null 2>&1
+  - apt-get install -y -qq ansible awscli > /dev/null 2>&1
   - wget -q https://releases.hashicorp.com/terraform/1.6.6/terraform_1.6.6_linux_amd64.zip
   - unzip -q terraform_1.6.6_linux_amd64.zip
   - mv terraform /usr/local/bin/
