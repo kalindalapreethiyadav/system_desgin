@@ -9,7 +9,7 @@
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
 ####################################################################
 
-module "vpc-main" {
+module "vpc" {
   source     = "./modules/vpc"
   cidr_block = "10.0.0.0/16"
 
@@ -29,7 +29,7 @@ module "aws_iam_role" {
   source = "./modules/iam"
 }
 
-module "ec2_server" {
+module "ec2" {
   source                    = "./modules/ec2"
   ec2_instance_profile_name = var.ec2_instance_profile_name
   subnet_id                 = var.subnet_id
