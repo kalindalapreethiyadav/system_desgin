@@ -23,6 +23,7 @@
         argv:
           - terraform
           - plan
+          - -no-color
           - -out=plan.tf
       args:
         chdir: terraform
@@ -38,6 +39,7 @@
           - terraform
           - apply
           - -auto-approve
+          - -no-color
           - plan.tf
       args:
         chdir: terraform
