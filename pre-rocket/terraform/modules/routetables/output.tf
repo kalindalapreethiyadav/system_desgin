@@ -9,3 +9,6 @@
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
 ####################################################################
 
+output "route_table_name" {
+  value = aws_route_table.public.name
+}

@@ -15,6 +15,11 @@ module "vpc-main" {
 
 }
 
+module "aws_route_table" {
+  source = "./modules/routetables"
+}
+
+
 module "s3" {
   source = "./modules/s3"
   bucket_name = "dev-zerohub-app-bucket"
