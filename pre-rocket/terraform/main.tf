@@ -15,10 +15,10 @@ module "vpc-main" {
 
 }
 
-module "aws_route_table" {
+module "routetables" {
   source = "./modules/routetables"
+  vpc_id = module.vpc.vpc_id
 }
-
 
 module "s3" {
   source      = "./modules/s3"

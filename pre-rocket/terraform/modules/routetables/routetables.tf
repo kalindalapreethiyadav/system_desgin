@@ -10,7 +10,7 @@
 ####################################################################
 
 resource "aws_route_table" "public" {
-  vpc_id = aws_vpc.main.id
+  vpc_id = var.vpc_id
 }
 
 resource "aws_route" "internet_access" {

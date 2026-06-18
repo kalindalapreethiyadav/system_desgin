@@ -10,5 +10,5 @@
 ####################################################################
 
 output "zerohunger_s3_bucket" {
-  value = aws_s3_bucket.zerohunger_s3_bucket.name
+  value = aws_s3_bucket.zerohunger_s3_bucket.bucket
 }
