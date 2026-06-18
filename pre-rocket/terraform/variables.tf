@@ -10,33 +10,49 @@
 ####################################################################
 
 variable "AWS_ACCESS_KEY_ID" {
-    description = "This is access key"
-    type = string
-    default = "bdhduohsjabckjsc"
+  description = "This is access key"
+  type        = string
+  default     = "bdhduohsjabckjsc"
 }
 
 variable "AWS_SECRET_ACCESS_KEY" {
-    description = "This is secert key"
-    type = string
-    default = "bdhduohsjabckjsc"
+  description = "This is secert key"
+  type        = string
+  default     = "bdhduohsjabckjsc"
 }
 
 variable "region" {
-  type = string
+  type    = string
   default = "us-east-1"
 }
 
 variable "ec2_instance_profile_name" {
-    type = string
-    default = "ec2-profile-name"
+  type    = string
+  default = "ec2-profile-name"
 }
 
 variable "subnet_id" {
-    type = string
-    default = "subnet-ibahdaouhou87"
+  type    = string
+  default = "subnet-ibahdaouhou87"
 }
 
 variable "cidr_block" {
-    type = string
-    default = "10.0.0.0/16"
+  type    = string
+  default = "10.0.0.0/16"
+}
+
+variable "Environment" {
+  description = "Environment name"
+  type        = string
+  default     = "dev"
+}
+
+variable "Tenant" {
+  description = "Tenant name"
+  type        = string
+  default     = "zerohunger"
+}
+
+variable "ssm_role_name" {
+  type = string
 }

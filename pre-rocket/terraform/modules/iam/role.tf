@@ -10,7 +10,7 @@
 ####################################################################
 
 resource "aws_iam_role" "ssm_role" {
-  name = "ssm-ec2-role"
+  name = "${var.Environment}-${var.Tenant}-role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"

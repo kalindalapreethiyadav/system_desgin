@@ -10,7 +10,7 @@
 ####################################################################
 
 resource "aws_lb" "alb" {
-  name               = "my-alb"
+  name               = var.lb_name
   internal           = false
   load_balancer_type = "application"
   subnets            = var.subnet_ids

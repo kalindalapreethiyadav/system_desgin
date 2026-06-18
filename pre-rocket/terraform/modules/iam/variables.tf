@@ -9,15 +9,18 @@
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
 ####################################################################
 
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 6.0"
-    }
-  }
+variable "ssm_role_name" {
+    type = string
 }
 
-provider "aws" {
-  region = "us-east-1"
+variable "Environment" {
+  description = "Environment name"
+  type        = string
+  default     = "dev"
+}
+
+variable "Tenant" {
+  description = "Tenant name"
+  type        = string
+  default     = "zerohunger"
 }
