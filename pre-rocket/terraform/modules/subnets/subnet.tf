@@ -9,29 +9,9 @@
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
 ####################################################################
 
-variable "AWS_ACCESS_KEY_ID" {
-    description = "This is access key"
-    type = string
-    default = "bdhduohsjabckjsc"
-}
+resource "aws_subnet" "public" {
+  count = 2
 
-variable "AWS_SECRET_ACCESS_KEY" {
-    description = "This is secert key"
-    type = string
-    default = "bdhduohsjabckjsc"
-}
-
-variable "region" {
-  type = string
-  default = "us-east-1"
-}
-
-variable "ec2_instance_profile_name" {
-    type = string
-    default = "ec2-profile-name"
-}
-
-variable "subnet_id" {
-    type = string
-    default = "subnet-ibahdaouhou87"
+  vpc_id = aws_vpc.main.id
+  cidr_block = cidrsubnet(var.cidr_block, 8, count.index)
 }

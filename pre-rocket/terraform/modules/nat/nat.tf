@@ -9,29 +9,11 @@
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
 ####################################################################
 
-variable "AWS_ACCESS_KEY_ID" {
-    description = "This is access key"
-    type = string
-    default = "bdhduohsjabckjsc"
+resource "aws_eip" "nat" {
+  domain = "vpc"
 }
 
-variable "AWS_SECRET_ACCESS_KEY" {
-    description = "This is secert key"
-    type = string
-    default = "bdhduohsjabckjsc"
-}
-
-variable "region" {
-  type = string
-  default = "us-east-1"
-}
-
-variable "ec2_instance_profile_name" {
-    type = string
-    default = "ec2-profile-name"
-}
-
-variable "subnet_id" {
-    type = string
-    default = "subnet-ibahdaouhou87"
+resource "aws_nat_gateway" "nat" {
+  allocation_id = aws_eip.nat.id
+  subnet_id     = aws_subnet.public[0].id
 }

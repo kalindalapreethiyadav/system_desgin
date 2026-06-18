@@ -9,29 +9,19 @@
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
 ####################################################################
 
-variable "AWS_ACCESS_KEY_ID" {
-    description = "This is access key"
-    type = string
-    default = "bdhduohsjabckjsc"
+resource "aws_route_table" "public" {
+  vpc_id = aws_vpc.main.id
 }
 
-variable "AWS_SECRET_ACCESS_KEY" {
-    description = "This is secert key"
-    type = string
-    default = "bdhduohsjabckjsc"
+resource "aws_route" "internet_access" {
+  route_table_id         = aws_route_table.public.id
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id             = aws_internet_gateway.igw.id
 }
 
-variable "region" {
-  type = string
-  default = "us-east-1"
-}
+resource "aws_route_table_association" "public" {
+  count = 2
 
-variable "ec2_instance_profile_name" {
-    type = string
-    default = "ec2-profile-name"
-}
-
-variable "subnet_id" {
-    type = string
-    default = "subnet-ibahdaouhou87"
+  subnet_id      = aws_subnet.public[count.index].id
+  route_table_id = aws_route_table.public.id
 }
