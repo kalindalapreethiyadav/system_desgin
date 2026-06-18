@@ -15,6 +15,7 @@ git add <file>              # Stage a specific file
 git add .                   # Stage all changes
 git commit -m "Message"     # Commit staged changes with a message
 
+
 git branch                  # List branches
 git branch <name>           # Create a new branch
 git checkout <name>         # Switch to a branch
