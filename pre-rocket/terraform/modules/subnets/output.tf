@@ -24,3 +24,4 @@ output "public_subnet_ids" {
 output "public_subnet_names" {
   value = aws_subnet.public[*].name
 }
+
