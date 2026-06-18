@@ -16,9 +16,8 @@ variable "region" {
   default = "us-east-1"
 }
 
-# variable "BUCKET_NAME" {
-#     type = string
-#     default = "dev-zerohunger-bucket"
-# }
+variable "ec2_instance_profile_name" {
+    type = string
+}
 
 
